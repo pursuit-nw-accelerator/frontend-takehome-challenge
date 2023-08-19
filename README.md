@@ -5,6 +5,8 @@
 1. run `npm install` to install, then `npm start` to start.
 1. Implement the requirements below.
 1. Submit your work as a pull request to the upstream (a PR against this repo).
+The deadline is **12 pm, Sunday, August 27**.
+You must request an extension by DM **before 9 am on Thursday, August 24**.
 
 ## Requirements
 1. Submit your project as a pull request to this repo.
@@ -32,18 +34,23 @@ You can expect that the API returns error responses with the json: `{ error: 'so
 
 ![finished app for reference](./users-app-completed.png)
 
-## Communication and planning
-The deadline is **5 pm, Friday, August 25**. Submitting late without communicating with me **at least 24 hours before the deadline** is not acceptable.
+## Planning, communication, and work quality
+The deadline is **12 pm, Sunday, August 27**.
+You must request an extension by DM **before 9 am on Thursday, August 24**.
 
+### Plan ahead
+- Review this assignment **right now** and determine whether you can complete this by the deadline.
+- Start working on this assignment **right now**. Don't wait until later.
+
+### Communication
+- If you need more time, send me a DM **ASAP**. Tell me exactly when you can submit the assignment.
+- You must request an extension by DM **before 9 am on Thursday, August 24**.
+- If you submit the asssignment late without informing me before that date, I will not review your work.
+
+### Work quality
 Treat this like a real takehome interview:
 - submit your very best work by the deadline
 - do not submit work that you know is incomplete and/or does not meet all of the requirements above
 - be 100% certain that your code on GitHub is exactly the same as the code you are running on your computer
-- take some time **right now** to understand the requirements
-    - if anything is unclear, post in the class channel **ASAP**
-- estimate how long it will take you to complete each requirement
-- look at your schedule and **actually book time** to build each part of the application
-- if you realize you won't have time to submit by the deadline, send me a Slack DM **ASAP**
-- if something comes up in your life that means you can't submit on time, send me a Slack DM **ASAP**
 - if you hit an unexpected bug or technical snag while working on the project, post a question in the Slack channel **ASAP**
 
