@@ -5,6 +5,7 @@
 1. run `npm install` to install, then `npm start` to start.
 1. Implement the requirements below.
 1. Submit your work as a pull request to the upstream (a PR against this repo).
+
 The deadline is **12 pm, Sunday, August 27**.
 You must request an extension by DM **before 9 am on Thursday, August 24**.
 
