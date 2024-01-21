@@ -1,4 +1,4 @@
-import SearchBar from './components/SearchBar/SearchBar';
+import FilterBar from './components/FilterBar/FilterBar';
 import Users from './components/Users/Users';
 import './App.css';
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <SearchBar />
+      <FilterBar />
       <Users />
     </div>
   );
