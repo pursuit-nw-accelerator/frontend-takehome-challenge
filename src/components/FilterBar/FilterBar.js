@@ -1,7 +1,7 @@
 import './FilterBar.css';
 
-const FitlerBar = () => {
+const FilterBar = () => {
   return <div>TODO: Add your filter buttons here</div>;
 };
 
-export default FitlerBar;
+export default FilterBar;

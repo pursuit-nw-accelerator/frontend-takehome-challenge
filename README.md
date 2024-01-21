@@ -35,6 +35,7 @@ Each user has a list of `hobbies`. Some hobbies are shared by many users, and so
 These requirements demonstrate your work quality, reliability, and professionalism as a software engineer. They are just as important as the functional requirements, and you will not pass if any of these are unmet.
 
 1. Submit your project as a pull request to this repo.
+1. Do not commit secrets files such as `.env`. You should know how to use `.gitignore` to make sure this doesn't happen.
 1. Include a README in the root of your project that explains how to run the project locally. The new README should replace the existing README doc (which you are reading now). Make sure your instructions work!
 1. Users should be able to expand or collapse individual cards evern after `Expand All` and `Collapse All` have been clicked.
 1. Demonstrate correct understanding of how to lift state up. This means that you **must not** change the component tree. Do not move or remove components, or change any parent-child relationships. However, you **can** (and will have to) add or change props or state in the existing components. You can create new components for loading, error, no results, or to handle layouts and styling.
