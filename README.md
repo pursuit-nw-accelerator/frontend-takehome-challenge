@@ -20,7 +20,7 @@ You can expect that the API returns error responses with the json: `{ error: 'so
 - Implement an `Expand All` button that, when clicked, expands all the cards regardless of their current state.
 - Implement a `Collapse All` button that, when clicked, collapses all the cards regardless of their current state.
 
-### Filter by hobbies
+### 3. Filter by hobbies
 Each user has a list of `hobbies`. Some hobbies are shared by many users, and some are unique to a user. We want to build a UI that filters users by their hobbies.
 
 - For each user, on a line below `Company`, display a comma separated list of the user's hobbies. The hobbies should be visible at all times (put it above the area that is hidden when the card is collapsed).
@@ -49,25 +49,5 @@ These requirements demonstrate your work quality, reliability, and professionali
 1. Your commit history should be clear and organized: one commit per feature, with a clearly written commit message.
 1. Do **not** implement additional features that are not part of the requirements (for example, detail pages, routing, favoriting, sorting, deployment, etc). Stick to the requirements and make sure they are properly and correctly implemented.
 
-![finished app for reference](./users-app-completed.png)
-
-## Planning, communication, and work quality
-The deadline is **12 pm, Sunday, August 27**.
-You must request an extension by DM **before 9 am on Thursday, August 24**.
-
-### Plan ahead
-- Review this assignment **right now** and determine whether you can complete this by the deadline.
-- Start working on this assignment **right now**. Don't wait until later.
-
-### Communication
-- If you need more time, send me a DM **ASAP**. Tell me exactly when you can submit the assignment.
-- You must request an extension by DM **before 9 am on Thursday, August 24**.
-- If you submit the asssignment late without informing me before that date, I will not review your work.
-
-### Work quality
-Treat this like a real takehome interview:
-- submit your very best work by the deadline
-- do not submit work that you know is incomplete and/or does not meet all of the requirements above
-- be 100% certain that your code on GitHub is exactly the same as the code you are running on your computer
-- if you hit an unexpected bug or technical snag while working on the project, post a question in the Slack channel **ASAP**
-
+![finished app for reference 1](./users-app-completed-1.png)
+![finished app for reference 2](./users-app-completed-2.png)
