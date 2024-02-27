@@ -26,6 +26,7 @@ Each user has a list of `hobbies`. Some hobbies are shared by many users, and so
 - For each user, on a line below `Company`, display a comma separated list of the user's hobbies. The hobbies should be visible at all times (put it above the area that is hidden when the card is collapsed).
 - For each **distinct** hobby in the data, create a button in the `<FilterBar />` component. Make sure there are no duplicates! For example there should be **only one** button for `yoga` even if many people have `yoga` as a hobby.
 - The hobby buttons should be displayed in alphabetical order.
+- Dynamically generate the list of hobby buttons. **Do not hard code the hobbies in your application.** If you hard-code them, that is an automatic fail.
 - Each hobby button should have two states: selected or not selected. When selected, the button should have a colored background. Clicking a button toggles its state between selected and not selected.
 - When a hobby button is selected, filter the list of users. Show only the users who have that hobby.
 - When ***more than one*** hobby button is selected, show only the users who have **all** of these hobbies. For example, if `yoga` and `reading` are selected, only show users whose hobbies include `yoga` and `reading`.
