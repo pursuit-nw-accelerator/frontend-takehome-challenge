@@ -1,7 +1,8 @@
 import './User.css';
 
-const User = ({ user }) => {
-  const { about, age, company, country, name, photo } = user;
+const User = ({ user, singleUserAboutToggle }) => {
+  const { about, age, company, country, name, photo, showAbout, id } = user;
+
 
   return (
     <section className="User">
@@ -15,13 +16,13 @@ const User = ({ user }) => {
           <li>Country: {country}</li>
           <li>Company: {company}</li>
         </ul>
-        <div className="User__about">
+        <div className={`User__about ${showAbout ? "" : "User__about__hidden"}`}>
           <h3>About {name.split(' ')[0]}:</h3>
           <p>{about}</p>
         </div>
       </div>
       <div className="User__controls">
-        <button>click me</button>
+        <button onClick={() => singleUserAboutToggle(id)}>click me</button>
       </div>
     </section>
   );

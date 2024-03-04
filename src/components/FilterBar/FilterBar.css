@@ -1,0 +1,8 @@
+.filterBar_container{
+  display: flex;
+}
+
+.about_status_buttons{
+  display: flex;
+  gap: 5px;
+}
