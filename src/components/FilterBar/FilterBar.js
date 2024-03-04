@@ -1,15 +1,10 @@
 import "./FilterBar.css";
-import { useState } from "react";
 
 const FilterBar = ({ setFilter, filter }) => {
   return (
     <div>
       {filter?.length > 0 ? (
-        <ul
-          style={{
-            listStyle: "none",
-          }}
-        >
+        <ul className="grid-list">
           {filter.map((item, idx) => (
             <li key={idx}>
               <button

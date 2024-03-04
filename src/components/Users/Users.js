@@ -1,6 +1,6 @@
 import User from "../User/User";
 import FilterBar from "../FilterBar/FilterBar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Users.css";
 
 const Users = ({ users = [] }) => {
