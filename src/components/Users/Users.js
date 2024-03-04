@@ -7,43 +7,56 @@ const Users = ({ users = [] }) => {
   const [showAll, setShowAll] = useState(true);
   const [filter, setFilter] = useState(() => {
     if (users.length > 0) {
-      return [...new Set(users.map((item) => item.hobbies).flat())].map(
-        (item) => ({
-          item,
-          enabled: true,
-        }),
-      );
+      return [
+        ...new Set(
+          users
+            .map((item) => item.hobbies)
+            .flat()
+            .sort((a, b) => a.localeCompare(b)),
+        ),
+      ].map((item) => ({
+        item,
+        enabled: false,
+      }));
     } else {
       return [];
     }
   });
 
-  const exclude = filter
-    .filter((item) => item.enabled === false)
+  const include = filter
+    .filter((item) => item.enabled === true)
     .map((item) => item.item);
-  console.log(exclude);
+
+  const filteredUsers = users.filter((item) => {
+    if (include.length > 1) {
+      return item.hobbies.every((y) => include.includes(y));
+    } else if (include.length === 1) {
+      return item.hobbies.some((y) => include.includes(y));
+    } else return true;
+  });
+
   return (
     <article className="Users">
       <FilterBar setFilter={setFilter} filter={filter} />
       <div>
-        <button type="click" onClick={() => setShowAll(true)}>
+        <button type="button" onClick={() => setShowAll(true)}>
           Expand All
         </button>
-        <button type="click" onClick={() => setShowAll(false)}>
+        <button type="button" onClick={() => setShowAll(false)}>
           Collapse All
         </button>
       </div>
       {showAll ? (
-        users
-          .filter((item) => {
-            return !item.hobbies.some((y) => exclude.includes(y));
-          })
-          .map((user) => {
-            const { id } = user;
-            return <User key={id} user={user} />;
-          })
+        <>
+          {filteredUsers.length > 0
+            ? filteredUsers.map((user) => {
+                const { id } = user;
+                return <User key={id} user={user} />;
+              })
+            : `No users match the filters: ${include.join(", ")}`}
+        </>
       ) : (
-        <>Hidden List</>
+        <>List Hidden</>
       )}
     </article>
   );
