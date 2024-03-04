@@ -17,21 +17,26 @@ const User = ({ user }) => {
           <li>Country: {country}</li>
           <li>Company: {company}</li>
         </ul>
-        {show ? (
-          <div className="User__about">
-            <h3>About {name.split(" ")[0]}:</h3>
-            <p>{about}</p>
-          </div>
-        ) : (
-          <>About Section</>
-        )}
+        <div className="User__about">
+          <h3>About {name.split(" ")[0]}:</h3>
+          <p>{about}</p>
+        </div>
       </div>
+
       <div className="User__controls">
         <button>click me</button>
         <button type="click" onClick={() => setShow(!show)}>
           {show ? "Show less" : "Show more"}
         </button>
       </div>
+
+      {show ? (
+        <div className="">
+          <>{user.hobbies}</>
+        </div>
+      ) : (
+        <>Hobbies</>
+      )}
     </section>
   );
 };

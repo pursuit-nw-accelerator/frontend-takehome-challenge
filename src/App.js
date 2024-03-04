@@ -1,10 +1,11 @@
 import FilterBar from "./components/FilterBar/FilterBar";
 import Users from "./components/Users/Users";
 import { useState, useEffect } from "react";
+import { data } from "./constants/data";
 import "./App.css";
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(data);
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -29,7 +30,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetchData();
+    //fetchData();
   }, []);
 
   return (
@@ -37,8 +38,9 @@ function App() {
       <h1>Our Users</h1>
       <FilterBar />
       <>{errorMsg}</>
-      {loading && <div>...Loading</div>}
-      {!loading && <Users users={users} />}
+      <Users users={data} />
+      {/* {loading && <div>...Loading</div>} */}
+      {/* {!loading && <Users users={users} />} */}
     </div>
   );
 }

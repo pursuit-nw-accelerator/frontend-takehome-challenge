@@ -1,6 +1,6 @@
 import User from "../User/User";
 import FilterBar from "../FilterBar/FilterBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Users.css";
 
 const Users = ({ users = [] }) => {
@@ -18,6 +18,10 @@ const Users = ({ users = [] }) => {
     }
   });
 
+  const exclude = filter
+    .filter((item) => item.enabled === false)
+    .map((item) => item.item);
+  console.log(exclude);
   return (
     <article className="Users">
       <FilterBar setFilter={setFilter} filter={filter} />
@@ -30,10 +34,14 @@ const Users = ({ users = [] }) => {
         </button>
       </div>
       {showAll ? (
-        users.map((user) => {
-          const { id } = user;
-          return <User key={id} user={user} />;
-        })
+        users
+          .filter((item) => {
+            return !item.hobbies.some((y) => exclude.includes(y));
+          })
+          .map((user) => {
+            const { id } = user;
+            return <User key={id} user={user} />;
+          })
       ) : (
         <>Hidden List</>
       )}
