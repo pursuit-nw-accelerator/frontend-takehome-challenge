@@ -2,6 +2,8 @@ import User from '../User/User';
 import './Users.css';
 
 const Users = ({ users = [] }) => {
+
+
   return (
     <article className="Users">
       {users.map((user) => {
@@ -10,6 +12,9 @@ const Users = ({ users = [] }) => {
       })}
     </article>
   );
+
+
+
 };
 
 export default Users;
