@@ -1,0 +1,6 @@
+.allHobbies {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 60%;
+  gap: 0.5rem;
+}

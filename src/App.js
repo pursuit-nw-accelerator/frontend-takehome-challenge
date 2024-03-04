@@ -48,7 +48,7 @@ function App() {
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <FilterBar />
+      <FilterBar users={users} />
       {renderContent()}
     </div>
   );
