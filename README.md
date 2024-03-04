@@ -38,3 +38,4 @@ npm run start
 | add filter section in Users     | use map to show button filters. remove duplicates with new Set                                       |
 | implement filter logic          | Only need one state to keep track of which hobbies would be enabled                                  |
 | correctly show filtered users   | keep two const variables to keep track of which hobbies are enabled and the final filtered user list |
+
