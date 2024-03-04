@@ -1,8 +1,28 @@
 import './FilterBar.css';
 
-const FilterBar = ({ allUsersAboutStatus }) => {
+const FilterBar = ({ hobbies, setHobbies, allUsersAboutStatus }) => {
+
+  //event
+  const hobbyButtonClick = (hobby) => {
+    const newHobbies = { ...hobbies };
+    newHobbies[hobby].selected = !newHobbies[hobby].selected;
+    setHobbies(newHobbies);
+  }
+  //render
+  const renderHobbiesButtons = () => {
+    return Object.values(hobbies).map((el) => {
+      return <button
+        className={el.selected ? 'highlight' : ""}
+        onClick={() => hobbyButtonClick(el.title)}
+        key={`hobby_button_${el.title}`}
+        disabled={el.disbale ? true : false}
+      >{el.title}</button>
+    })
+  }
   return <div className='filterBar_container'>
-    <div></div>
+    <div className='filterBar_button_container'>
+      {renderHobbiesButtons()}
+    </div>
     <div className='about_status_buttons'>
       <button onClick={allUsersAboutStatus.expand}>Expand All</button>
       <button onClick={allUsersAboutStatus.collapse}>Collapse All</button>

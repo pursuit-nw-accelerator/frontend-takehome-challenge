@@ -6,3 +6,18 @@
   display: flex;
   gap: 5px;
 }
+
+.filterBar_button_container{
+  display: flex;
+  gap: 5px;
+  flex-flow: row wrap;
+  
+}
+.filterBar_button_container button{
+  cursor: pointer;
+}
+
+.filterBar_button_container button.highlight{
+  background-color: darkseagreen;
+  color: black;
+}

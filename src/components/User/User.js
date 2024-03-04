@@ -1,8 +1,7 @@
 import './User.css';
 
 const User = ({ user, singleUserAboutToggle }) => {
-  const { about, age, company, country, name, photo, showAbout, id } = user;
-
+  const { about, age, company, country, name, photo, showAbout, id, hobbies } = user;
 
   return (
     <section className="User">
@@ -20,6 +19,7 @@ const User = ({ user, singleUserAboutToggle }) => {
           <h3>About {name.split(' ')[0]}:</h3>
           <p>{about}</p>
         </div>
+        <p>{hobbies.join(", ")}</p>
       </div>
       <div className="User__controls">
         <button onClick={() => singleUserAboutToggle(id)}>click me</button>

@@ -2,13 +2,13 @@ import FilterBar from './components/FilterBar/FilterBar';
 import Users from './components/Users/Users';
 import './App.css';
 import { fetchItems } from './fetch_';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [users, setUsers] = useState({});
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(true);
+  const [hobbies, setHobbies] = useState({});
   // TODO: Fetch data here
   useEffect(() => {
     setErrorMsg("");
@@ -16,13 +16,16 @@ function App() {
       dataCallabck: (data) => {
 
         const usersObj = {};
-
+        const hobbies = {};
         for (let user of data) {
           user.showAbout = false;
           usersObj[user.id] = user;
+          for (let hobby of user.hobbies) {
+            hobbies[hobby] = { title: hobby, disable: false, selected: false };
+          }
         }
         setUsers(usersObj);
-
+        setHobbies(hobbies);
       },
       error: (err) => {
         setErrorMsg(err.message);
@@ -32,6 +35,7 @@ function App() {
       }
     });
   }, []);
+
   //about toggle function 
   const showAllUsersAbout = () => {
     const newUsersObj = {};
@@ -65,11 +69,44 @@ function App() {
     } else {
 
       return <>
-        <FilterBar allUsersAboutStatus={{ expand: showAllUsersAbout, collapse: hideAllUsersAbout }} />
-        <Users users={Object.values(users)} singleUserAboutToggle={singleUserAboutToggle} />
+        <FilterBar
+          allUsersAboutStatus={{ expand: showAllUsersAbout, collapse: hideAllUsersAbout }}
+          hobbies={hobbies}
+          setHobbies={setHobbies}
+        />
+        <Users
+          users={Object.values(filterUsers(users, hobbies, setHobbies))}
+          singleUserAboutToggle={singleUserAboutToggle}
+
+          hobbies={hobbies}
+        />
       </>
 
     }
+  }
+  //filter user
+  function filterUsers(users, hobbies) {
+
+    // users
+    const usersByHobbies = {};
+    for (let id in users) {
+      const hobbiesSet = new Set(users[id].hobbies);
+      let rangeChecker = true;
+      for (let hobby in hobbies) {
+        if (hobbies[hobby].selected === false) continue;
+
+        if (!hobbiesSet.has(hobby)) {
+          rangeChecker = false;
+          break;
+        }
+      }
+
+      if (rangeChecker) {
+        usersByHobbies[id] = users[id];
+      }
+
+    }
+    return usersByHobbies;
   }
 
   return (
