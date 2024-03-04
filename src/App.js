@@ -77,7 +77,6 @@ function App() {
         <Users
           users={Object.values(filterUsers(users, hobbies, setHobbies))}
           singleUserAboutToggle={singleUserAboutToggle}
-
           hobbies={hobbies}
         />
       </>

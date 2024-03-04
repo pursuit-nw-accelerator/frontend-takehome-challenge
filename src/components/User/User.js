@@ -14,12 +14,12 @@ const User = ({ user, singleUserAboutToggle }) => {
           <li>Age: {age}</li>
           <li>Country: {country}</li>
           <li>Company: {company}</li>
+          <li>Hobbies: {hobbies.join(", ")}</li>
         </ul>
         <div className={`User__about ${showAbout ? "" : "User__about__hidden"}`}>
           <h3>About {name.split(' ')[0]}:</h3>
           <p>{about}</p>
         </div>
-        <p>{hobbies.join(", ")}</p>
       </div>
       <div className="User__controls">
         <button onClick={() => singleUserAboutToggle(id)}>click me</button>

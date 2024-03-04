@@ -10,7 +10,10 @@ const FilterBar = ({ hobbies, setHobbies, allUsersAboutStatus }) => {
   }
   //render
   const renderHobbiesButtons = () => {
-    return Object.values(hobbies).map((el) => {
+
+    const endProductUsers = Object.values(hobbies).sort((a, b) => a.title < b.title ? -1 : 1);
+
+    return endProductUsers.map((el) => {
       return <button
         className={el.selected ? 'highlight' : ""}
         onClick={() => hobbyButtonClick(el.title)}
