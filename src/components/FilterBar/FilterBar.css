@@ -1,0 +1,18 @@
+
+.hobby__container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hobby {
+    border: 1px solid gray;
+    border-radius: 3px; 
+    width: fit-content;
+    padding: 5px;
+    margin: 5px;
+}
+
+.hobby:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.468);
+}
