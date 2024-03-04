@@ -1,7 +1,9 @@
-import './User.css';
+import { useState } from "react";
+import "./User.css";
 
 const User = ({ user }) => {
   const { about, age, company, country, name, photo } = user;
+  const [show, setShow] = useState(true);
 
   return (
     <section className="User">
@@ -15,13 +17,20 @@ const User = ({ user }) => {
           <li>Country: {country}</li>
           <li>Company: {company}</li>
         </ul>
-        <div className="User__about">
-          <h3>About {name.split(' ')[0]}:</h3>
-          <p>{about}</p>
-        </div>
+        {show ? (
+          <div className="User__about">
+            <h3>About {name.split(" ")[0]}:</h3>
+            <p>{about}</p>
+          </div>
+        ) : (
+          <>About Section</>
+        )}
       </div>
       <div className="User__controls">
         <button>click me</button>
+        <button type="click" onClick={() => setShow(!show)}>
+          {show ? "Show less" : "Show more"}
+        </button>
       </div>
     </section>
   );
