@@ -3,7 +3,15 @@ import "./User.css";
 
 const User = ({ user }) => {
   const [showMore, setShowMore] = useState(false);
-  const { about, age, company, country, name, photo } = user;
+  const { about, age, company, country, name, photo, hobbies } = user;
+
+  function UserHobbies(hobbiesArray) {
+    let allHobbies = "";
+    for (let hobby of hobbiesArray) {
+      allHobbies += `${hobby}, `;
+    }
+    return allHobbies.slice(0, allHobbies.length - 2);
+  }
 
   return (
     <section className="User">
@@ -16,6 +24,7 @@ const User = ({ user }) => {
           <li>Age: {age}</li>
           <li>Country: {country}</li>
           <li>Company: {company}</li>
+          <li>Hobbies: {UserHobbies(hobbies)}</li>
         </ul>
         {showMore && (
           <div className="User__about">
