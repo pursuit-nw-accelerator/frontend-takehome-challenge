@@ -21,7 +21,7 @@ const User = ({ user }) => {
         </div>
       </div>
       <div className="User__controls">
-        <button>click me</button>
+        <button>Show more</button>
       </div>
     </section>
   );
