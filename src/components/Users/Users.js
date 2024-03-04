@@ -3,7 +3,6 @@ import './Users.css';
 
 const Users = ({ users = [] }) => {
 
-
   return (
     <article className="Users">
       {users.map((user) => {
@@ -12,8 +11,6 @@ const Users = ({ users = [] }) => {
       })}
     </article>
   );
-
-
 
 };
 
