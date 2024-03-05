@@ -16,10 +16,12 @@ const User = ({ user, singleUserAboutToggle }) => {
           <li>Company: {company}</li>
           <li>Hobbies: {hobbies.join(", ")}</li>
         </ul>
-        <div className={`User__about ${showAbout ? "" : "User__about__hidden"}`}>
-          <h3>About {name.split(' ')[0]}:</h3>
-          <p>{about}</p>
-        </div>
+        {showAbout &&
+          <div className={`User__about`}>
+            <h3>About {name.split(' ')[0]}:</h3>
+            <p>{about}</p>
+          </div>
+        }
       </div>
       <div className="User__controls">
         <button onClick={() => singleUserAboutToggle(id)}>click me</button>
