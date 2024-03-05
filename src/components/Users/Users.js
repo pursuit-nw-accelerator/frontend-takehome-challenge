@@ -5,23 +5,21 @@ import "./Users.css";
 
 const Users = ({ users = [] }) => {
   const [showAll, setShowAll] = useState(true);
-  const [filter, setFilter] = useState(() => {
-    if (users.length > 0) {
-      return [
-        ...new Set(
-          users
-            .map((item) => item.hobbies)
-            .flat()
-            .sort((a, b) => a.localeCompare(b)),
-        ),
-      ].map((item) => ({
-        item,
-        enabled: false,
-      }));
-    } else {
-      return [];
-    }
-  });
+  const [filter, setFilter] = useState(
+    users.length
+      ? [
+          ...new Set(
+            users
+              .map((item) => item.hobbies)
+              .flat()
+              .sort((a, b) => a.localeCompare(b)),
+          ),
+        ].map((item) => ({
+          item,
+          enabled: false,
+        }))
+      : [],
+  );
 
   const include = filter
     .filter((item) => item.enabled === true)
