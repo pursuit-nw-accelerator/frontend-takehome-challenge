@@ -7,6 +7,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [filter, setFilter] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -18,6 +19,19 @@ function App() {
 
       if (res.ok) {
         setUsers(data);
+        setFilter(
+          [
+            ...new Set(
+              data
+                .map((item) => item.hobbies)
+                .flat()
+                .sort((a, b) => a.localeCompare(b)),
+            ),
+          ].map((item) => ({
+            item,
+            enabled: false,
+          })),
+        );
       } else {
         throw new Error(error);
       }
@@ -35,12 +49,24 @@ function App() {
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <FilterBar />
+      <FilterBar
+        filter={filter}
+        eventHandler={(item) => {
+          setFilter((prevFilter) =>
+            prevFilter.map((filterItem) =>
+              filterItem.item === item.target.value
+                ? { ...filterItem, enabled: !filterItem.enabled }
+                : filterItem,
+            ),
+          );
+        }}
+      />
       <>{errorMsg}</>
       {loading && <div>Loading...</div>}
-      {!loading && <Users users={users} />}
+      <Users users={users} filter={filter} />
     </div>
   );
 }
 
 export default App;
+
