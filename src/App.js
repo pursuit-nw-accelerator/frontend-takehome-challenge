@@ -7,20 +7,24 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       try {
+        setLoading(true);
         const res = await fetch(`${API_URL}/users`);
         const json = await res.json();
 
         if (res.ok) {
-          setUsers(json.data)
+          setUsers(json.data);
         } else {
           throw new Error(json.error);
         }
       } catch (error) {
         console.log(error.message);
+      } finally {
+        setLoading(false);
       }
     }
     fetchData();
@@ -29,8 +33,14 @@ function App() {
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <FilterBar />
-      <Users />
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          <FilterBar />
+          <Users />
+        </div>
+      )}
     </div>
   );
 }
