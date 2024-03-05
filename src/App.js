@@ -63,10 +63,9 @@ function App() {
       />
       <>{errorMsg}</>
       {loading && <div>Loading...</div>}
-      <Users users={users} filter={filter} />
+      {users.length && <Users users={users} filter={filter} />}
     </div>
   );
 }
 
 export default App;
-

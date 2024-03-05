@@ -2,8 +2,10 @@ import User from "../User/User";
 import { useState } from "react";
 import "./Users.css";
 
-const Users = ({ users = [], filter = [] }) => {
-  const [showAll, setShowAll] = useState(true);
+const Users = ({ users, filter = [] }) => {
+  const [showAll, setShowAll] = useState(
+    Array.from({ length: users.length }).fill(1),
+  );
 
   const include = filter
     .filter((item) => item.enabled === true)
@@ -17,32 +19,53 @@ const Users = ({ users = [], filter = [] }) => {
     } else return true;
   });
 
-  if (users.length)
-    return (
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => {
+          const newArr = showAll.map(() => 1);
+          setShowAll(newArr);
+        }}
+      >
+        Expand All
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          const newArr = showAll.map(() => 0);
+          setShowAll(newArr);
+        }}
+      >
+        Collapse All
+      </button>
       <article className="Users">
-        <div>
-          <button type="button" onClick={() => setShowAll(true)}>
-            Expand All
-          </button>
-          <button type="button" onClick={() => setShowAll(false)}>
-            Collapse All
-          </button>
-        </div>
-        {showAll ? (
-          <>
-            {filteredUsers.length > 0
-              ? filteredUsers.map((user) => {
-                  const { id } = user;
-                  return <User key={id} user={user} />;
-                })
-              : `No users match the filters: ${include.join(", ")}`}
-          </>
-        ) : (
-          <>List Hidden</>
-        )}
+        <>
+          {filteredUsers.length > 0
+            ? filteredUsers.map((user, idx) => {
+                const { id } = user;
+                return (
+                  <User
+                    key={id}
+                    user={user}
+                    showAll={showAll}
+                    aboutHandler={(e) => {
+                      const newArr = showAll?.map((item, i) => {
+                        if (+e.target.value === i) {
+                          return 1 ^ item;
+                        } else return item;
+                      });
+                      setShowAll(newArr);
+                    }}
+                    idx={idx}
+                  />
+                );
+              })
+            : `No users match the filters: ${include.join(", ")}`}
+        </>
       </article>
-    );
-  return null;
+    </>
+  );
 };
 
 export default Users;

@@ -1,9 +1,7 @@
-import { useState } from "react";
 import "./User.css";
 
-const User = ({ user }) => {
+const User = ({ user, showAll = [], aboutHandler, idx }) => {
   const { about, age, company, country, name, photo } = user;
-  const [show, setShow] = useState(true);
 
   return (
     <section className="User">
@@ -18,17 +16,17 @@ const User = ({ user }) => {
           <li>Company: {company}</li>
           <li>Hobbies: {user.hobbies.join(", ")}</li>
         </ul>
-        {show ? (
+        {showAll[idx] === 1 && (
           <div className="User__about">
             <h3>About {name.split(" ")[0]}:</h3>
             <p>{about}</p>
           </div>
-        ) : null}
+        )}
       </div>
 
       <div className="User__controls">
-        <button type="click" onClick={() => setShow(!show)}>
-          {show ? "Show less" : "Show more"}
+        <button type="click" onClick={aboutHandler} value={idx}>
+          {showAll[idx] === 1 ? "Show less" : "Show more"}
         </button>
       </div>
     </section>
