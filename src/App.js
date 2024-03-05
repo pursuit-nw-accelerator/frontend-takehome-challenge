@@ -1,7 +1,7 @@
-import "./App.scss";
 import { useEffect, useState } from "react";
 import FilterBar from "./components/FilterBar/FilterBar";
 import Users from "./components/Users/Users";
+import "./App.scss";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -20,9 +20,11 @@ const App = () => {
       setLoading(true);
 
       await fetch(API)
-        .then((res) => {
+        .then(async (res) => {
           if (!res.ok) {
-            throw new Error("Something went wrong");
+            return res.json().then(({ error }) => {
+              throw new Error(error || "Something went wrong");
+            });
           }
           return res.json();
         })
@@ -43,7 +45,7 @@ const App = () => {
       return (
         <>
           <h1>Our Users</h1>
-          <FilterBar />
+          <FilterBar users={users} />
           <Users users={users} />
         </>
       );
