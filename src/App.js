@@ -42,7 +42,7 @@ function App() {
       ) : (
         <div>
           <FilterBar />
-          <Users />
+          <Users users={users}/>
         </div>
       )}
     </div>
