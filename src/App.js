@@ -77,6 +77,7 @@ const App = () => {
             users={users}
             expandedList={expandedList}
             handleExpandedList={handleExpandedList}
+            selectedHobbies={selectedHobbies}
           />
         </>
       );
