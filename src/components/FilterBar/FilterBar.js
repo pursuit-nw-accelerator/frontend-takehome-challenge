@@ -1,9 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./FilterBar.scss";
 
-const FilterBar = ({ users = [] }) => {
-  const [hobbies, setHobbies] = useState([]);
-
+const FilterBar = ({
+  users = [],
+  handleExpandAll,
+  handleCollapseAll,
+  hobbies,
+  setHobbies,
+}) => {
   useEffect(() => {
     addHobbyList();
   }, []); // eslint-disable-line
@@ -18,14 +22,27 @@ const FilterBar = ({ users = [] }) => {
       });
     });
 
-    setHobbies([...hobbySet]);
+    const sortedHobbies = [...hobbySet].sort();
+
+    setHobbies(sortedHobbies);
   };
 
   return (
-    <section>
-      {hobbies.map((filter, index) => {
-        return <button key={index}>{filter}</button>;
-      })}
+    <section className="buttons-container">
+      <div className="hobby-buttons">
+        {hobbies.map((hobby, index) => {
+          return (
+            <button key={index} className="hobby-button">
+              {hobby}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="expand-buttons">
+        <button onClick={handleExpandAll}>Expand All</button>
+        <button onClick={handleCollapseAll}>Collapse All</button>
+      </div>
     </section>
   );
 };

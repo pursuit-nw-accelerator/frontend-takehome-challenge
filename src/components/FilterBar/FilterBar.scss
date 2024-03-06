@@ -1,0 +1,21 @@
+.buttons-container {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  text-align: center;
+
+  .hobby-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.3em;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .expand-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 1em;
+  }
+}

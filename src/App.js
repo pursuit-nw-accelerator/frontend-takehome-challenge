@@ -7,6 +7,9 @@ const API = process.env.REACT_APP_API_URL;
 
 const App = () => {
   const [users, setUsers] = useState([]);
+  const [hobbies, setHobbies] = useState([]);
+  const [selectedHobbies, setSelectedHobbies] = useState([]);
+  const [expandedList, setExpandedList] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -36,6 +39,22 @@ const App = () => {
     }
   };
 
+  const handleExpandedList = (id) => {
+    if (!expandedList.includes(id)) {
+      setExpandedList([...expandedList, id]);
+    } else {
+      setExpandedList(expandedList.filter((user) => user !== id));
+    }
+  };
+
+  const handleExpandAll = () => {
+    setExpandedList(users.map((user) => user.id));
+  };
+
+  const handleCollapseAll = () => {
+    setExpandedList([]);
+  };
+
   const renderData = () => {
     if (error) {
       return <div>ERROR: {error}</div>;
@@ -45,8 +64,18 @@ const App = () => {
       return (
         <>
           <h1>Our Users</h1>
-          <FilterBar users={users} />
-          <Users users={users} />
+          <FilterBar
+            users={users}
+            handleExpandAll={handleExpandAll}
+            handleCollapseAll={handleCollapseAll}
+            hobbies={hobbies}
+            setHobbies={setHobbies}
+          />
+          <Users
+            users={users}
+            expandedList={expandedList}
+            handleExpandedList={handleExpandedList}
+          />
         </>
       );
     }
