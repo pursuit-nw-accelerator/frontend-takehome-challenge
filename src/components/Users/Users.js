@@ -13,7 +13,7 @@ const Users = ({ users, filter = [] }) => {
 
   const filteredUsers = users.filter((item) => {
     if (include.length > 1) {
-      return item.hobbies.every((y) => include.includes(y));
+      return include.every((y) => item.hobbies.includes(y));
     } else if (include.length === 1) {
       return item.hobbies.includes(include[0]);
     } else return true;

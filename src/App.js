@@ -63,7 +63,7 @@ function App() {
       />
       <>{errorMsg}</>
       {loading && <div>Loading...</div>}
-      {users.length && <Users users={users} filter={filter} />}
+      {users.length > 0 && <Users users={users} filter={filter} />}
     </div>
   );
 }
