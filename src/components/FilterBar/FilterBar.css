@@ -4,3 +4,10 @@
   width: 60%;
   gap: 0.5rem;
 }
+.active-button {
+  background-color: lightblue;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+}

@@ -10,6 +10,17 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [users, setUsers] = useState([]);
+  const [clickedButtons, setClickedButtons] = useState([]);
+
+  const buttonTextFromFilterBar = (buttonText) => {
+    if (clickedButtons.includes(buttonText)) {
+      setClickedButtons(
+        clickedButtons.filter((button) => button !== buttonText)
+      );
+    } else {
+      setClickedButtons([...clickedButtons, buttonText]);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -40,16 +51,22 @@ function App() {
       return <div>Loading.....</div>;
     } else if (errorMessage) {
       return <div>{errorMessage}</div>;
-    } else {
-      return <Users users={users} />;
     }
   };
 
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <FilterBar users={users} />
       {renderContent()}
+      {!loading && (
+        <>
+          <FilterBar
+            users={users}
+            buttonTextFromFilterBar={buttonTextFromFilterBar}
+          />
+          <Users users={users} clickedButtons={clickedButtons} />
+        </>
+      )}
     </div>
   );
 }
