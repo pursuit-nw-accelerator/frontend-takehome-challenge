@@ -7,6 +7,8 @@ const FilterBar = ({
   handleCollapseAll,
   hobbies,
   setHobbies,
+  selectedHobbies,
+  setSelectedHobbies,
 }) => {
   useEffect(() => {
     addHobbyList();
@@ -27,12 +29,31 @@ const FilterBar = ({
     setHobbies(sortedHobbies);
   };
 
+  const toggleSelected = (hobby) => {
+    if (!selectedHobbies.includes(hobby)) {
+      const newSelectedHobby = [...selectedHobbies, hobby];
+      setSelectedHobbies(newSelectedHobby);
+      return;
+    } else {
+      const removeSelectedHobby = selectedHobbies.filter(
+        (selectedHobby) => selectedHobby !== hobby
+      );
+      setSelectedHobbies(removeSelectedHobby);
+    }
+  };
+
   return (
     <section className="buttons-container">
       <div className="hobby-buttons">
         {hobbies.map((hobby, index) => {
           return (
-            <button key={index} className="hobby-button">
+            <button
+              key={index}
+              className={selectedHobbies.includes(hobby) ? "selected" : null}
+              onClick={() => {
+                toggleSelected(hobby);
+              }}
+            >
               {hobby}
             </button>
           );

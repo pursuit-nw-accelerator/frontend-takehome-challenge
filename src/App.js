@@ -70,6 +70,8 @@ const App = () => {
             handleCollapseAll={handleCollapseAll}
             hobbies={hobbies}
             setHobbies={setHobbies}
+            selectedHobbies={selectedHobbies}
+            setSelectedHobbies={setSelectedHobbies}
           />
           <Users
             users={users}
