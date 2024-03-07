@@ -7,6 +7,17 @@ import { useEffect } from 'react';
 function App() {
   const [ users, setUsers ] = useState([]);
   const [loading, setLoading ] = useState(false)
+  const [ toggle, setToggle ] = useState([]);
+
+
+  const handleToggle = (id) => {
+    if(toggle.includes(id)){
+      setToggle(toggle.filter((currId) => currId !== id))
+    }else {
+      setToggle([...toggle, id])
+    }
+  }
+
   // TODO: Fetch data here
   const fetchData = async () =>  {
     try {
@@ -15,7 +26,7 @@ function App() {
       const { data, err: errMessage } = await response.json();
       if(response.ok){
         setUsers(data);
-        console.log(users)
+         console.log(users)
       }else {
         throw new Error({error: errMessage})
       }
@@ -30,13 +41,26 @@ function App() {
     fetchData()
   },[]);
 
+  const filterUser = (filter) => {
+   const { hobbies } = users[0]
+   console.log(users[0].hobbies)
+     if(filter.length > 0){
+      console.log(filter);
+      const filteredUser = filter.filter(hobby => hobbies.includes(hobby));
+       setUsers(filteredUser)
+     }
+  }
+
   return (
     <div className="App">
       <h1>Our Users</h1>
-      {loading ? "..." : (
+      {loading ? "Loading..." : (
         <>
-          <FilterBar users={users}/>
-          <Users users={users}/>
+          <FilterBar users={users} filterUser={filterUser}/>
+          <Users 
+          users={users}
+          toggle={toggle}
+          onClick={handleToggle} />
        </> 
       )}
       
