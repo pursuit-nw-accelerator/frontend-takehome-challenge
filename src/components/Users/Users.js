@@ -3,8 +3,7 @@ import './Users.css';
 
 import { useState } from "react";
 
-const Users = ({ users = [] }) => {
-  const [expanded, setExpanded] = useState([]);
+const Users = ({ users = [], expanded, setExpanded }) => {
 
   const toggleExpand = (id) => {
     if (expanded.includes(id)) {

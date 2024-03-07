@@ -7,10 +7,11 @@ import './App.css';
 const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
-  // TODO: Fetch data here
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [expanded, setExpanded] = useState([]);
+
   const fetchData = async () => {
     try {
       setLoading(true)
@@ -41,8 +42,8 @@ function App() {
     } else {
       return (<div className="App">
         <h1>Our Users</h1>
-        <FilterBar />
-        <Users users={users} />
+        <FilterBar users={users} setExpanded={setExpanded}/>
+        <Users users={users} expanded={expanded} setExpanded={setExpanded}/>
       </div>);
     }
   };
