@@ -3,7 +3,7 @@ import "./Loading.scss";
 const Loading = () => {
   return (
     <div className="loading-container">
-      Loading
+      Loading...
       <div className="progress">
         <div className="progress-color"></div>
       </div>
