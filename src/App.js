@@ -3,6 +3,9 @@ import FilterBar from "./components/FilterBar/FilterBar";
 import Users from "./components/Users/Users";
 import "./App.scss";
 
+import Loading from "./components/Loading/Loading";
+import Error from "./components/Error/Error";
+
 const API = process.env.REACT_APP_API_URL;
 
 const App = () => {
@@ -57,13 +60,14 @@ const App = () => {
 
   const renderData = () => {
     if (error) {
-      return <div>ERROR: {error}</div>;
+      return <Error error={error} />;
     } else if (loading) {
-      return <div>Loading...</div>;
+      return <Loading />;
     } else {
       return (
         <>
           <h1>Our Users</h1>
+          <h1>Filter By Hobbies</h1>
           <FilterBar
             users={users}
             handleExpandAll={handleExpandAll}
