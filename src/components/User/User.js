@@ -1,7 +1,7 @@
 import './User.css';
 
 const User = ({ user, expanded, onClick }) => {
-  const { about, age, company, country, name, photo } = user;
+  const { about, age, company, country, name, photo, hobbies } = user;
 
   return (
     <section className="User">
@@ -14,6 +14,7 @@ const User = ({ user, expanded, onClick }) => {
           <li>Age: {age}</li>
           <li>Country: {country}</li>
           <li>Company: {company}</li>
+          <li>Hobbies: {hobbies.join(", ")}</li>
         </ul>
         {expanded && (
           <div className="User__about">
