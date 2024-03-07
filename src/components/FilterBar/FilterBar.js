@@ -27,12 +27,12 @@ const FilterBar = ({users, setExpanded}) => {
     }
     else{return 0}
   })
-  console.log(listOfHobbies)
+
   return(
   <div className='filterBar'>
     <div className='hobbyList'>
-      {listOfHobbies.map((hobby) => {
-        return <button>{hobby}</button>
+      {listOfHobbies.map((hobby, i) => {
+        return <button key={i}>{hobby}</button>
       })}
     </div>
     <div className='expandCollapseAll'>
