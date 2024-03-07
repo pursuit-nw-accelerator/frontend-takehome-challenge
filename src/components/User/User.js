@@ -1,13 +1,8 @@
-import { useState } from 'react';
 import './User.css';
 
-const User = ({ user }) => {
-  const [ toggle, setToggle ] = useState(false);
-  const { about, age, company, country, name, photo } = user;
+const User = ({ user, onClick, toggle }) => {
+  const { about, age, company, country, name, photo, hobbies } = user;
 
-  const handleClick = () => {
-    setToggle(!toggle)
-  }
 
   return (
     <section className="User">
@@ -20,6 +15,7 @@ const User = ({ user }) => {
           <li>Age: {age}</li>
           <li>Country: {country}</li>
           <li>Company: {company}</li>
+          <li>Hobbies: {hobbies.join(", ")}</li>
         </ul>
         {toggle ? (
         <div className="User__about">
@@ -28,7 +24,7 @@ const User = ({ user }) => {
         </div> ) : ""}
       </div>
       <div className="User__controls">
-        <button onClick={handleClick}>
+        <button onClick={onClick}>
           { toggle ? "Show less" : "Show more" }</button>
       </div>
     </section>
