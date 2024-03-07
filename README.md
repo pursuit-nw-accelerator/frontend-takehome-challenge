@@ -6,7 +6,7 @@
 
 1. Select the green "CODE" button and select either https, SSH, or GitHub CLI (whichever you prefer) and copy the url.
 
-   ![green code button](../frontend-takehome-challenge/src/Images/image1.png)
+   ![green code button](image1.png)
 
 2. Open a terminal of your choosing and type:
 
@@ -14,7 +14,7 @@
    git clone <the url you copied>
    ```
 
-   ![git clone command](../frontend-takehome-challenge/src/Images/image2.png)
+   ![git clone command](image2.png)
 
 3. cd into the newly cloned repo and install packages:
 
@@ -22,7 +22,7 @@
    npm install
    ```
 
-   ![npm install then cd into directory](../frontend-takehome-challenge/src/Images/image3.png)
+   ![npm install then cd into directory](image3.png)
 
 4. Start the client with the command:
 
@@ -30,6 +30,6 @@
    npm start
    ```
 
-   ![npm start command](../frontend-takehome-challenge/src/Images/image4.png)
+   ![npm start command](image4.png)
 
 5. CONGRADULATIONS! You're now running the client locally.
