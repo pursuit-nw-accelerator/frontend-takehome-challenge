@@ -15,7 +15,6 @@
 
     .progress-color {
       background-color: black;
-      width: 10%;
       height: 10px;
       border-radius: 1em;
       animation: progress-loader 4s infinite linear;
@@ -34,7 +33,7 @@
           width: 85%;
         }
         100% {
-          width: 95%;
+          width: 100%;
         }
       }
     }

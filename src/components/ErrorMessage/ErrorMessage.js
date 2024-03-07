@@ -1,6 +1,6 @@
-import "./Error.scss";
+import "./ErrorMessage.scss";
 
-const Error = ({ error }) => {
+const ErrorMessage = ({ error }) => {
   return (
     <div className="error-container">
       ERROR: <span className="error-message">{error}</span>
@@ -8,4 +8,4 @@ const Error = ({ error }) => {
   );
 };
 
-export default Error;
+export default ErrorMessage;
