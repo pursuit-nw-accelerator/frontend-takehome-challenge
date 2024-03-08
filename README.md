@@ -33,3 +33,7 @@
    ![npm start command](image4.png)
 
 5. CONGRADULATIONS! You're now running the client locally.
+
+## Link to google doc
+
+https://docs.google.com/document/d/1EybeemZxNrIwlZqvCyDCsxQokDHEuIGsw3QCP-20SfE/edit?usp=sharing
