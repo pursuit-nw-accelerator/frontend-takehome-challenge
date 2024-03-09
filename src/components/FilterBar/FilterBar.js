@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./FilterBar.css";
 
-const FilterBar = ({ users: originalUsers, setFilteredUsers, fetchUsers  }) => {
+const FilterBar = ({ users: originalUsers, setFilteredUsers, fetchUsers, expandAllUsers, collapseAllUsers }) => {
   const [selectedHobbies, setSelectedHobbies] = useState([]);
   const [filteredUsers, setFilteredUsersLocally] = useState(originalUsers);
 
@@ -34,29 +34,6 @@ const FilterBar = ({ users: originalUsers, setFilteredUsers, fetchUsers  }) => {
     await fetchUsers(); 
   };
 
-  const expandAll = () => {
-    const updatedUsers = originalUsers.map((user) => ({
-      ...user,
-      expanded: true,
-    }));
-    setFilteredUsers(updatedUsers);
-  };
-
-  const collapseAll = () => {
-    const updatedUsers = originalUsers.map((user) => ({
-      ...user,
-      expanded: false,
-    }));
-    setFilteredUsers(updatedUsers);
-  };
-
-  const noUsersMessage =
-    filteredUsers.length === 0 && selectedHobbies.length > 0 ? (
-      <div className="no-users">
-        No users match the filters: {selectedHobbies.join(", ")}
-      </div>
-    ) : null;
-
   return (
     <div className="FilterBar">
       {allHobbies.sort().map((hobby) => (
@@ -71,13 +48,12 @@ const FilterBar = ({ users: originalUsers, setFilteredUsers, fetchUsers  }) => {
       <button className="clear" onClick={clearAllHobbies}>
         Clear All
       </button>
-      <button className="expand" onClick={expandAll}>
+      <button className="expand" onClick={expandAllUsers}>
         Expand All
       </button>
-      <button className="collapse" onClick={collapseAll}>
+      <button className="collapse" onClick={collapseAllUsers}>
         Collapse All
       </button>
-      {noUsersMessage}
     </div>
   );
 };

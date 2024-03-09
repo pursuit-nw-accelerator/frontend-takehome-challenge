@@ -9,6 +9,7 @@ function App() {
   const [error, setError] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [expandedUser, setExpandedUser] = useState(null);
+  const [expandAll, setExpandAll] = useState(false); 
 
   useEffect(() => {
     fetchUsers();
@@ -40,6 +41,14 @@ function App() {
     setExpandedUser((prevUserId) => (prevUserId === userId ? null : userId));
   };
 
+  const expandAllUsers = () => {
+    setExpandAll(true);
+  };
+
+  const collapseAllUsers = () => {
+    setExpandAll(false);
+  };
+
   return (
     <div className="App">
       <h1>Our Users</h1>
@@ -49,8 +58,19 @@ function App() {
         <div>Error: {error}</div>
       ) : (
         <>
-          <FilterBar users={users} setFilteredUsers={setFilteredUsers} fetchUsers={fetchUsers} />
-          <Users users={filteredUsers} expandedUser={expandedUser} toggleExpanded={toggleExpanded} />
+          <FilterBar
+            users={users}
+            setFilteredUsers={setFilteredUsers}
+            fetchUsers={fetchUsers}
+            expandAllUsers={expandAllUsers} 
+            collapseAllUsers={collapseAllUsers}
+          />
+          <Users
+            users={filteredUsers}
+            expandedUser={expandedUser}
+            expandAll={expandAll}
+            toggleExpanded={toggleExpanded}
+          />
         </>
       )}
     </div>

@@ -2,22 +2,20 @@ import React from 'react';
 import User from '../User/User';
 import './Users.css';
 
-const Users = ({ users = [], expandedUser, toggleExpanded }) => {
+const Users = ({ users = [], expandedUser, expandAll, toggleExpanded }) => {
   return (
     <article className="Users">
-      {users.map((user) => {
-        const { id } = user;
-        return (
-          <User
-            key={id}
-            user={user}
-            isExpanded={expandedUser === id}
-            toggleExpanded={() => toggleExpanded(id)}
-          />
-        );
-      })}
+      {users.map((user) => (
+        <User
+          key={user.id}
+          user={user}
+          isExpanded={expandAll || expandedUser === user.id}
+          toggleExpanded={() => toggleExpanded(user.id)}
+        />
+      ))}
     </article>
   );
 };
 
 export default Users;
+

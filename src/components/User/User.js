@@ -2,7 +2,7 @@ import React from 'react';
 import './User.css';
 
 const User = ({ user, isExpanded, toggleExpanded }) => {
-  const {  age, company, country, name, photo, about, hobbies } = user;
+  const { age, company, country, name, photo, about, hobbies } = user;
 
   return (
     <section className="User">
