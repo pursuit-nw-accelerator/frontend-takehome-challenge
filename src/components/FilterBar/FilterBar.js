@@ -25,10 +25,10 @@ const FilterBar = ({ users, buttonTextFromFilterBar }) => {
 
   return (
     <div className="allHobbies">
-      {allUsersHobbies.map((hobby, index) => {
+      {allUsersHobbies.map((hobby) => {
         return (
           <button
-            key={index}
+            key={hobby}
             onClick={() => handleButtonClick(hobby)}
             className={buttonSelected[hobby] ? "active-button" : ""}
           >
