@@ -1,7 +1,31 @@
+import { useState } from "react";
 import User from "../User/User";
 import "./Users.css";
 
 const Users = ({ users, clickedButtons }) => {
+  const [expandedArray, setExpandedArray] = useState([]);
+
+  const toggleExpanded = (id) => {
+    if (expandedArray.includes(id)) {
+      const filteredIdArray = expandedArray.filter(
+        (expandedId) => expandedId !== id
+      );
+      setExpandedArray(filteredIdArray);
+    } else {
+      setExpandedArray([...expandedArray, id]);
+    }
+  };
+
+  const expandAll = () => {
+    const all_Users_Id = [];
+    users.forEach((user) => all_Users_Id.push(user.id));
+    setExpandedArray(all_Users_Id);
+  };
+
+  const collapseAll = () => {
+    setExpandedArray([]);
+  };
+
   let usersToDisplay = [...users];
 
   if (clickedButtons.length > 0) {
@@ -22,15 +46,28 @@ const Users = ({ users, clickedButtons }) => {
   const noUsersFound = clickedButtons.join(", ");
 
   return (
-    <article className="Users">
-      {usersToDisplay.map((user) => {
-        const { id } = user;
-        return <User key={id} user={user} />;
-      })}
-      {usersToDisplay.length === 0 && (
-        <p>No users match the filter: {noUsersFound}.</p>
-      )}
-    </article>
+    <div className="users">
+      <div className="buttons">
+        <button onClick={() => expandAll()}>Expand All</button>
+        <button onClick={() => collapseAll()}>Collapse All</button>
+      </div>
+      <article>
+        {usersToDisplay.map((user) => {
+          const { id } = user;
+          return (
+            <User
+              key={id}
+              user={user}
+              toggleExpanded={toggleExpanded}
+              expanded={expandedArray.includes(id)}
+            />
+          );
+        })}
+        {usersToDisplay.length === 0 && (
+          <p>No users match the filter: {noUsersFound}.</p>
+        )}
+      </article>
+    </div>
   );
 };
 

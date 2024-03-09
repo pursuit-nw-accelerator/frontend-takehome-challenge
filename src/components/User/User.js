@@ -1,9 +1,8 @@
 import { useState } from "react";
 import "./User.css";
 
-const User = ({ user }) => {
-  const [showMore, setShowMore] = useState(false);
-  const { about, age, company, country, name, photo, hobbies } = user;
+const User = ({ user, expanded, toggleExpanded }) => {
+  const { about, age, company, country, name, photo, hobbies, id } = user;
 
   return (
     <section className="User">
@@ -18,7 +17,7 @@ const User = ({ user }) => {
           <li>Company: {company}</li>
           <li>Hobbies: {hobbies.join(", ")}</li>
         </ul>
-        {showMore && (
+        {expanded && (
           <div className="User__about">
             <h3>About {name.split(" ")[0]}:</h3>
             <p>{about}</p>
@@ -26,8 +25,8 @@ const User = ({ user }) => {
         )}
       </div>
       <div className="User__controls">
-        <button onClick={() => setShowMore(!showMore)}>
-          {showMore ? "show less" : "show more"}
+        <button onClick={() => toggleExpanded(id)}>
+          {expanded ? "show less" : "show more"}
         </button>
       </div>
     </section>
