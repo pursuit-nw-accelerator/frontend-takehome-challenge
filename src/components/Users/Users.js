@@ -1,8 +1,6 @@
 import User from '../User/User';
 import './Users.css';
 
-import { useState } from "react";
-
 const Users = ({ users = [], expanded, setExpanded }) => {
 
   const toggleExpand = (id) => {

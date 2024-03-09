@@ -8,6 +8,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [selectedHobbies, setSelectedHobbies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [expanded, setExpanded] = useState([]);
@@ -30,6 +31,10 @@ function App() {
     }
   }
 
+  const hobbiesToDisplay = users.filter((user) =>
+    selectedHobbies.every(selectedHobby => user.hobbies.includes(selectedHobby))
+  );
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -42,8 +47,12 @@ function App() {
     } else {
       return (<div className="App">
         <h1>Our Users</h1>
-        <FilterBar users={users} setExpanded={setExpanded}/>
-        <Users users={users} expanded={expanded} setExpanded={setExpanded}/>
+        <FilterBar
+          users={users}
+          setExpanded={setExpanded}
+          setSelectedHobbies={setSelectedHobbies}
+          selectedHobbies={selectedHobbies} />
+        <Users users={hobbiesToDisplay} expanded={expanded} setExpanded={setExpanded} />
       </div>);
     }
   };
