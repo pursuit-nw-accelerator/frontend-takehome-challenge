@@ -52,7 +52,11 @@ function App() {
           setExpanded={setExpanded}
           setSelectedHobbies={setSelectedHobbies}
           selectedHobbies={selectedHobbies} />
-        <Users users={hobbiesToDisplay} expanded={expanded} setExpanded={setExpanded} />
+        <Users
+          users={hobbiesToDisplay}
+          expanded={expanded}
+          setExpanded={setExpanded}
+          selectedHobbies={selectedHobbies} />
       </div>);
     }
   };

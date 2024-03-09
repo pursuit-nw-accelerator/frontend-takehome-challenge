@@ -1,7 +1,7 @@
 import User from '../User/User';
 import './Users.css';
 
-const Users = ({ users = [], expanded, setExpanded }) => {
+const Users = ({ users = [], expanded, setExpanded, selectedHobbies }) => {
 
   const toggleExpand = (id) => {
     if (expanded.includes(id)) {
@@ -15,10 +15,13 @@ const Users = ({ users = [], expanded, setExpanded }) => {
 
   return (
     <article className="Users">
-      {users.map((user) => {
-        const { id } = user;
-        return <User key={id} user={user} expanded={expanded.includes(user.id)} onClick={() => toggleExpand(user.id)} />;
-      })}
+      {users.length ?
+        users.map((user) => {
+          const { id } = user;
+          return <User key={id} user={user} expanded={expanded.includes(user.id)} onClick={() => toggleExpand(user.id)} />;
+        })
+        :
+        `No users match the features: ${selectedHobbies.join(", ")}`}
     </article>
   );
 };
