@@ -1,8 +1,6 @@
-import { useState } from "react";
 import "./User.css";
 
-const User = ({ user }) => {
-  const [toggleAbout, setToggleAbout] = useState(false);
+const User = ({ user, toggleAbout, onClick }) => {
   const { about, age, company, country, name, photo } = user;
 
   return (
@@ -25,7 +23,7 @@ const User = ({ user }) => {
         )}
       </div>
       <div className="User__controls">
-        <button onClick={() => setToggleAbout(!toggleAbout)}>
+        <button onClick={onClick}>
           {toggleAbout ? "Hide" : "Show"}
         </button>
       </div>
