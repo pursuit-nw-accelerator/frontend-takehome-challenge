@@ -7,38 +7,52 @@ function App() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
+  useEffect(() => {
+    setFilteredUsers(users);
+  }, [users]);
+
   const fetchUsers = async () => {
     try {
+      setLoading(true);
+      setError(null);
       const response = await fetch('https://users-app-backend.onrender.com/users');
       if (!response.ok) {
         throw new Error('Failed to fetch list of Users');
       }
       const data = await response.json();
       setUsers(data.data);
-      setLoading(false);
+      setFilteredUsers(data.data);
     } catch (error) {
       setError(error.message);
+    } finally {
       setLoading(false);
     }
   };
 
-  if (loading) {
-    return <div className='App'>Loading...</div>;
-  }
-  if (error) {
-    return <div className='App'>Error: {error}</div>;
-  }
+  const toggleExpanded = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <FilterBar users={users} setUsers={setUsers} />
-      <Users users={users} />
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>Error: {error}</div>
+      ) : (
+        <>
+          <FilterBar users={users} setFilteredUsers={setFilteredUsers} fetchUsers={fetchUsers} />
+          <Users users={filteredUsers} expanded={expanded} toggleExpanded={toggleExpanded} />
+        </>
+      )}
     </div>
   );
 }

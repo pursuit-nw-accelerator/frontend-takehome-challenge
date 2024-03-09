@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './User.css';
 
-const User = ({ user }) => {
+const User = ({ user, expanded, toggleExpanded }) => {
   const { age, company, country, name, photo, about, hobbies } = user;
-  const [expanded, setExpanded] = useState(false);
-
-  const toggleExpanded = () => {
-    setExpanded(!expanded);
-  };
 
   return (
     <section className="User">
