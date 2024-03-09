@@ -1,7 +1,13 @@
+import React, { useState } from 'react';
 import './User.css';
 
 const User = ({ user }) => {
-  const { about, age, company, country, name, photo } = user;
+  const { age, company, country, name, photo, about, hobbies } = user;
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleExpanded = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <section className="User">
@@ -14,14 +20,19 @@ const User = ({ user }) => {
           <li>Age: {age}</li>
           <li>Country: {country}</li>
           <li>Company: {company}</li>
+          <li>Hobbies: {hobbies.join(', ')}</li>
         </ul>
-        <div className="User__about">
-          <h3>About {name.split(' ')[0]}:</h3>
-          <p>{about}</p>
-        </div>
+        {expanded && (
+          <div className="User__details">
+            <h3>About {name.split(' ')[0]}:</h3>
+            <p>{about}</p>
+          </div>
+        )}
       </div>
       <div className="User__controls">
-        <button>click me</button>
+        <button onClick={toggleExpanded}>
+          {expanded ? 'Show Less' : 'Show More'}
+        </button>
       </div>
     </section>
   );
