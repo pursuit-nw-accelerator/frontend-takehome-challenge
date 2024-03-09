@@ -18,9 +18,14 @@ const Users = ({ users = [] }) => {
     setToggleAbout(newExpanded);
   };
 
+  const handleCollapseAll = () => {
+    setToggleAbout([]);
+  };
+
   return (
     <article className="Users">
       <button onClick={handleExpandAll}>Expand All</button>
+      <button onClick={handleCollapseAll}>Collapse All</button>
       {users.map((user) => {
         const { id } = user;
         return (
