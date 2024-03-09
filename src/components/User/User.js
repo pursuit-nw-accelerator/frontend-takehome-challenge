@@ -1,8 +1,8 @@
 import React from 'react';
 import './User.css';
 
-const User = ({ user, expanded, toggleExpanded }) => {
-  const { age, company, country, name, photo, about, hobbies } = user;
+const User = ({ user, isExpanded, toggleExpanded }) => {
+  const {  age, company, country, name, photo, about, hobbies } = user;
 
   return (
     <section className="User">
@@ -17,7 +17,7 @@ const User = ({ user, expanded, toggleExpanded }) => {
           <li>Company: {company}</li>
           <li>Hobbies: {hobbies.join(', ')}</li>
         </ul>
-        {expanded && (
+        {isExpanded && (
           <div className="User__details">
             <h3>About {name.split(' ')[0]}:</h3>
             <p>{about}</p>
@@ -25,9 +25,7 @@ const User = ({ user, expanded, toggleExpanded }) => {
         )}
       </div>
       <div className="User__controls">
-        <button onClick={toggleExpanded}>
-          {expanded ? 'Show Less' : 'Show More'}
-        </button>
+        <button onClick={toggleExpanded}>{isExpanded ? 'Show Less' : 'Show More'}</button>
       </div>
     </section>
   );

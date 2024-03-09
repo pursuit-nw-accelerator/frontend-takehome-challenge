@@ -8,7 +8,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const [expanded, setExpanded] = useState(false);
+  const [expandedUser, setExpandedUser] = useState(null);
 
   useEffect(() => {
     fetchUsers();
@@ -36,8 +36,8 @@ function App() {
     }
   };
 
-  const toggleExpanded = () => {
-    setExpanded(!expanded);
+  const toggleExpanded = (userId) => {
+    setExpandedUser((prevUserId) => (prevUserId === userId ? null : userId));
   };
 
   return (
@@ -50,7 +50,7 @@ function App() {
       ) : (
         <>
           <FilterBar users={users} setFilteredUsers={setFilteredUsers} fetchUsers={fetchUsers} />
-          <Users users={filteredUsers} expanded={expanded} toggleExpanded={toggleExpanded} />
+          <Users users={filteredUsers} expandedUser={expandedUser} toggleExpanded={toggleExpanded} />
         </>
       )}
     </div>
