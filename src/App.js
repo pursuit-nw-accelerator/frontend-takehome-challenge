@@ -41,7 +41,7 @@ function App() {
         <div>Error: {errMsg}</div>
       ) : (
         <div>
-          <FilterBar />
+              <FilterBar users={users} />
           <Users users={users}/>
         </div>
       )}
