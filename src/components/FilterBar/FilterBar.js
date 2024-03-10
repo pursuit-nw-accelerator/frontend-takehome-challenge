@@ -35,26 +35,28 @@ const FilterBar = ({ users: originalUsers, setFilteredUsers, fetchUsers, expandA
   };
 
   return (
-    <div className="FilterBar">
-      {allHobbies.sort().map((hobby) => (
-        <button
-          key={hobby}
-          className={selectedHobbies.includes(hobby) ? "selected" : ""}
-          onClick={() => toggleHobby(hobby)}
-        >
-          {hobby}
-        </button>
-      ))}
-      <button className="clear" onClick={clearAllHobbies}>
-        Clear All
+<div className="FilterBar">
+  <div className="hobby-buttons">
+    {allHobbies.sort().map((hobby) => (
+      <button key={hobby} className={selectedHobbies.includes(hobby) ? "selected" : ""} onClick={() => toggleHobby(hobby)} >
+        {hobby}
       </button>
-      <button className="expand" onClick={expandAllUsers}>
-        Expand All
-      </button>
-      <button className="collapse" onClick={collapseAllUsers}>
-        Collapse All
-      </button>
-    </div>
+    ))}
+  </div>
+  <div className="action-buttons">
+    <button className="expand" onClick={expandAllUsers}>
+      Expand All
+    </button>
+    <button className="collapse" onClick={collapseAllUsers}>
+      Collapse All
+    </button>
+    <button className="clear" onClick={clearAllHobbies}>
+      Clear All
+    </button>
+  </div>
+</div>
+
+
   );
 };
 
