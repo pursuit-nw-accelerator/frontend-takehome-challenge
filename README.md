@@ -25,4 +25,3 @@ REACT_APP_URL=<url>
 ```bash
 npm start
 ```
-Planning done on [Docs](https://docs.google.com/spreadsheets/d/15DCf8hDise6BjinWAo_qwS_4CTfy5gHcLl7NzUYV3OQ/edit#gid=0)
