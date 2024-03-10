@@ -1,0 +1,9 @@
+.FilterBar button.selected {
+  background-color: blue;
+  color: white;
+  /* Other styles for selected button */
+}
+
+.FilterBar button + button {
+  margin-left: 10px;
+}
