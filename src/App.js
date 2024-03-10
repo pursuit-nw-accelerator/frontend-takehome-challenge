@@ -36,6 +36,7 @@ function App() {
 
   const handleFilterBtnClick = (hobby) => {
     let category = hobby.target.value
+    console.log(category);
     if(selectedHobby.includes(category)){
       setSelectedHobby(selectedHobby.filter(currHobby => currHobby !== category))
     }else {
@@ -44,11 +45,14 @@ function App() {
   }
   
   const filterByHobby = () => {
-  if(selectedHobby.length > 0){
-    let filterUsers = users.filter(user => user.hobbies.some(hobby => selectedHobby.includes(hobby)))
-    setUsers(filterUsers)
+    if (selectedHobby.length > 0) {
+      let filteredUsers = users.filter(user => {
+        return selectedHobby.every(selected => user.hobbies.includes(selected));
+      });
+      setUsers(filteredUsers);
+    }
   }
-}
+  
 
 // TODO: Fetch data here
 const fetchData = async () =>  {
