@@ -1,3 +1,4 @@
+//STYLING
 import './FilterBar.css';
 
 const FilterBar = () => {
