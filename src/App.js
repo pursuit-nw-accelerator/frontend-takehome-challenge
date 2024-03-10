@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [hobbySelected, setHobbySelected] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [toggleAbout, setToggleAbout] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,6 +33,14 @@ function App() {
     }
     fetchData();
   }, []);
+
+  const handleExpandAbout = (id) => {
+    if (toggleAbout.includes(id)) {
+      setToggleAbout(toggleAbout.filter((currId) => currId !== id));
+    } else {
+      setToggleAbout([...toggleAbout, id]);
+    }
+  };
 
   const handleHobbySelected = (hobby) => {
     if (hobbySelected.includes(hobby)) {
@@ -59,8 +68,9 @@ function App() {
             users={users}
             onClick={handleHobbySelected}
             hobbySelected={hobbySelected}
+            setToggleAbout={setToggleAbout}
           />
-          <Users users={filteredUsers} hobbies={hobbySelected} />
+          <Users users={filteredUsers} hobbies={hobbySelected} toggleAbout={toggleAbout} onClick={handleExpandAbout} />
         </div>
       );
     }

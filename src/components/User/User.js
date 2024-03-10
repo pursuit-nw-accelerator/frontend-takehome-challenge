@@ -25,7 +25,7 @@ const User = ({ user, toggleAbout, onClick }) => {
       </div>
       <div className="User__controls">
         <button onClick={onClick}>
-          {toggleAbout ? "Hide" : "Show"}
+          {toggleAbout ? "Hide" : "Show More"}
         </button>
       </div>
     </section>

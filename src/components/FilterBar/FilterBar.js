@@ -1,6 +1,6 @@
 import "./FilterBar.css";
 
-const FilterBar = ({ users, onClick, hobbySelected }) => {
+const FilterBar = ({ users, onClick, hobbySelected, setToggleAbout }) => {
   function getAllHobbies(arr) {
     let set = new Set();
 
@@ -17,6 +17,15 @@ const FilterBar = ({ users, onClick, hobbySelected }) => {
   const allHobbies = getAllHobbies(users).sort((a, b) =>
     a > b ? 1 : a < b ? -1 : 0
   );
+
+  const handleExpandAll = () => {
+    const newExpanded = users.map((user) => user.id);
+    setToggleAbout(newExpanded);
+  };
+
+  const handleCollapseAll = () => {
+    setToggleAbout([]);
+  };
 
   return (
     <div>
@@ -36,6 +45,8 @@ const FilterBar = ({ users, onClick, hobbySelected }) => {
           </button>
         );
       })}
+      <button onClick={handleExpandAll}>Expand All</button>
+      <button onClick={handleCollapseAll}>Collapse All</button>
     </div>
   );
 };
