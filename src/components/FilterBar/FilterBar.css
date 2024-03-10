@@ -1,0 +1,20 @@
+.filter-expand {
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-expand button {
+    margin: 2px;
+}
+
+.filter-buttons {
+    width: 70%;
+}
+
+.expand-buttons {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-right: 10px;
+    width: 30%;
+}

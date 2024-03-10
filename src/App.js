@@ -10,6 +10,26 @@ function App() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [expanded, setExpanded] = useState([]);
+  const [hobbies, setHobbies] = useState([]);
+
+  const toggleHobby = hobby => {
+    if (hobbies.includes(hobby)) {
+      setHobbies(hobbies.filter(currHobby => currHobby !== hobby));
+    }
+    else {
+      setHobbies([...hobbies, hobby]);
+    }
+  }
+
+  const setExpandAll = () => {
+    const allIds = users.map(user => user.id);
+    setExpanded(allIds);
+  }
+
+  const setCollapseAll = () => {
+    setExpanded([]);
+  }
 
   const fetchData = async () => {
     try {
@@ -37,6 +57,10 @@ function App() {
     fetchData();
   }, []);
 
+  const filteredUsers = users.filter(user => 
+    hobbies.every(hobby => user.hobbies.includes(hobby))
+  );
+
   const renderContent = () => {
     if (loading) {
       return <div className="Loading">Loading...</div>;
@@ -47,8 +71,18 @@ function App() {
     else {
       return (
         <>
-          <FilterBar />
-          <Users users={users} />
+          <FilterBar
+            users={users}
+            hobbies={hobbies}
+            setExpandAll={setExpandAll}
+            setCollapseAll={setCollapseAll}
+            toggleHobby={toggleHobby}
+          />
+          <Users
+            users={filteredUsers}
+            expanded={expanded}
+            setExpanded={setExpanded}
+          />
         </>
       );
     }
