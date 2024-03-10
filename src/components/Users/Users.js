@@ -44,7 +44,7 @@ const Users = ({ users }) => {
         user={user}
         showAbout = {showAbout.includes(user.id)}
         onClick= {() => toggleShowAbout(user.id)}
-        />;
+        />
       })}
     </article>
   );

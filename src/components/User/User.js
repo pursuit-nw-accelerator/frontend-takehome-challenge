@@ -2,7 +2,7 @@
 import './User.css';
 
 const User = ({ showAbout, user, onClick }) => {
-  const { about, age, company, country, name, photo } = user;
+  const { about, age, company, country, name, photo, hobbies } = user;
 
   return (
     <section className="User">
@@ -15,6 +15,7 @@ const User = ({ showAbout, user, onClick }) => {
           <li>Age: {age}</li>
           <li>Country: {country}</li>
           <li>Company: {company}</li>
+          <li>Hobbies: {hobbies.join(", ")}</li>
         </ul>
         { showAbout && (
         <div className="User__about">
