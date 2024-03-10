@@ -9,6 +9,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState("");
+  const [hobbySelected, setHobbySelected] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,19 +33,43 @@ function App() {
     fetchData();
   }, []);
 
+  const handleHobbySelected = (hobby) => {
+    if (hobbySelected.includes(hobby)) {
+      setHobbySelected(
+        hobbySelected.filter((currHobby) => currHobby !== hobby)
+      );
+    } else {
+      setHobbySelected([...hobbySelected, hobby]);
+    }
+  };
+
+  const filteredUsers = users.filter((user) =>
+    hobbySelected.every((hobby) => user.hobbies.includes(hobby))
+  );
+
+  const renderContent = () => {
+    if (loading) {
+      return <div>Loading...</div>;
+    } else if (errMsg) {
+      return <div>Error: {errMsg}</div>;
+    } else {
+      return (
+        <div>
+          <FilterBar
+            users={users}
+            onClick={handleHobbySelected}
+            hobbySelected={hobbySelected}
+          />
+          <Users users={filteredUsers} hobbies={hobbySelected} />
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="App">
       <h1>Our Users</h1>
-      {loading ? (
-        <div>Loading...</div>
-      ) : errMsg ? (
-        <div>Error: {errMsg}</div>
-      ) : (
-        <div>
-              <FilterBar users={users} />
-          <Users users={users}/>
-        </div>
-      )}
+      {renderContent()}
     </div>
   );
 }

@@ -1,19 +1,17 @@
 import "./FilterBar.css";
 
-const FilterBar = ({ users }) => {
+const FilterBar = ({ users, onClick, hobbySelected }) => {
   function getAllHobbies(arr) {
-    let tempArr = [];
+    let set = new Set();
 
     for (let i = 0; i < arr.length; i++) {
       const hobbies = arr[i].hobbies;
       for (let j = 0; j < hobbies.length; j++) {
-        if (!tempArr.includes(hobbies[j])) {
-          tempArr.push(hobbies[j]);
-        }
+        set.add(hobbies[j]);
       }
     }
 
-    return tempArr;
+    return Array.from(set);
   }
 
   const allHobbies = getAllHobbies(users).sort((a, b) =>
@@ -23,8 +21,20 @@ const FilterBar = ({ users }) => {
   return (
     <div>
       <h3>Filter By Hobby</h3>
-      {allHobbies.map((hobby) => {
-        return <button>{hobby}</button>;
+      {allHobbies.map((hobby, i) => {
+        return (
+          <button
+            key={hobby + i}
+            onClick={() => onClick(hobby)}
+            style={{
+              backgroundColor: hobbySelected.includes(hobby)
+                ? "skyblue"
+                : "white",
+            }}
+          >
+            {hobby}
+          </button>
+        );
       })}
     </div>
   );

@@ -2,7 +2,7 @@ import User from "../User/User";
 import "./Users.css";
 import { useState } from "react";
 
-const Users = ({ users = [] }) => {
+const Users = ({ users = [], hobbies }) => {
   const [toggleAbout, setToggleAbout] = useState([]);
 
   const handleExpandAbout = (id) => {
@@ -22,11 +22,11 @@ const Users = ({ users = [] }) => {
     setToggleAbout([]);
   };
 
-  return (
-    <article className="Users">
-      <button onClick={handleExpandAll}>Expand All</button>
-      <button onClick={handleCollapseAll}>Collapse All</button>
-      {users.map((user) => {
+  const renderContent = () => {
+    if (users.length === 0) {
+      return <p>No users match the filters: {hobbies.join(", ")}</p>;
+    } else {
+      return users.map((user) => {
         const { id } = user;
         return (
           <User
@@ -36,7 +36,15 @@ const Users = ({ users = [] }) => {
             onClick={() => handleExpandAbout(user.id)}
           />
         );
-      })}
+      });
+    }
+  };
+
+  return (
+    <article className="Users">
+      <button onClick={handleExpandAll}>Expand All</button>
+      <button onClick={handleCollapseAll}>Collapse All</button>
+      {renderContent()}
     </article>
   );
 };
