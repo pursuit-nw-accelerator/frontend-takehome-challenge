@@ -1,26 +1,29 @@
-import './FilterBar.css';
+import "./FilterBar.css";
 
-
-const FilterBar = ({users}) => {
-  const hobbyArr =[];
-  users.filter(user => hobbyArr.push(...user.hobbies));
-  const hobby = hobbyArr.filter((hobby,i,arr) => arr.indexOf(hobby) === i )
-
-  const handleOnClick = () => {
-    console.log("clicked");
-  }
-
-
-  return( 
+const FilterBar = ({ hobbyList, handleByExpand, handleByCollapse, selectedHobby,  handleFilterBtnClick}) => {
+ 
+  return (
     <>
-    <h2>Filter by hobby</h2>
-      <div>
-        <div className='hobby__container'>
-        {hobby.map((hobby, i) => <button key={i} onClick= {handleOnClick}  className='hobby'>{hobby}</button>)}
+      <h2>Filter by hobby</h2>
+        <div className="hobby__container">
+          <div className="hobby__right">
+          {hobbyList.map((hobby, i) => (
+            <button
+              key={i}
+              onClick={handleFilterBtnClick}
+              className={`hobby ${selectedHobby.includes(hobby) ? 'active' : ''}`}
+              value={hobby}>
+              {hobby}
+            </button>
+          ))}
+          </div>
+            <div className="hobby__left">
+              <button className="hobby" onClick={handleByExpand}>Expand All</button>
+              <button className="hobby" onClick={handleByCollapse}>Collapse All</button>
+            </div>
         </div>
-      </div>
     </>
-    )
+  );
 };
 
 export default FilterBar;
