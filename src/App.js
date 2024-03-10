@@ -8,7 +8,7 @@ function App() {
   const url = process.env.REACT_APP_API_URL;
 
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState("");
   const [users, setUsers] = useState([]);
   const [clickedButtons, setClickedButtons] = useState([]);
 
@@ -25,18 +25,18 @@ function App() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      setErrorMessage("");
+      setError("");
 
       const res = await fetch(`${url}`);
-      const { data, error } = await res.json();
+      const { data, error: errorMessage } = await res.json();
 
       if (res.ok) {
         setUsers(data);
       } else {
-        throw new error(error);
+        throw new Error(errorMessage);
       }
     } catch (error) {
-      setErrorMessage(error.message);
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -49,16 +49,10 @@ function App() {
   const renderContent = () => {
     if (loading) {
       return <div>Loading.....</div>;
-    } else if (errorMessage) {
-      return <div>{errorMessage}</div>;
-    }
-  };
-
-  return (
-    <div className="App">
-      <h1>Our Users</h1>
-      {renderContent()}
-      {!loading && (
+    } else if (error) {
+      return <div>Error: {error}</div>;
+    } else {
+      return (
         <>
           <FilterBar
             users={users}
@@ -66,7 +60,14 @@ function App() {
           />
           <Users users={users} clickedButtons={clickedButtons} />
         </>
-      )}
+      );
+    }
+  };
+
+  return (
+    <div className="App">
+      <h1>Our Users</h1>
+      {renderContent()}
     </div>
   );
 }
