@@ -1,15 +1,63 @@
-import FilterBar from './components/FilterBar/FilterBar';
-import Users from './components/Users/Users';
 import './App.css';
+import { useState, useEffect } from 'react';
+import Users from './components/Users/Users';
+import FilterBar from './components/FilterBar/FilterBar';
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
   // TODO: Fetch data here
+  const [users, setUsers] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const res = await fetch(`${API_URL}/users`);
+      const { data, error: errorMsg } = await res.json();
+      if (res.ok) {
+        setUsers(data);
+      }
+      else {
+        throw new Error(errorMsg);
+      }
+    }
+    catch (err) {
+      setError(err.message);
+    }
+    finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const renderContent = () => {
+    if (loading) {
+      return <div className="Loading">Loading...</div>;
+    }
+    else if (error) {
+      return <div className="Error">Error: {error} </div>;
+    }
+    else {
+      return (
+        <>
+          <FilterBar />
+          <Users users={users} />
+        </>
+      );
+    }
+  };
 
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <FilterBar />
-      <Users />
+      {renderContent()}
     </div>
   );
 }
