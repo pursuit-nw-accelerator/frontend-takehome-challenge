@@ -1,6 +1,21 @@
 .App {
-    width: 60vw;
-    height: 100vh;
-    margin: 0 auto;
+  width: 60vw;
+  height: 100vh;
+  margin: 0 auto;
 }
 
+.App {
+  max-width: 1200px; /* Adjust as needed */
+  margin: auto;
+  padding: 20px; /* Add padding if needed */
+}
+
+.UserControls {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0;
+}
+
+.UserControls button + button {
+  margin-left: 10px;
+}
