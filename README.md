@@ -1,6 +1,6 @@
 
 ## Cristian Valle
-Planning done on [Docs](https://docs.google.com/spreadsheets/d/15DCf8hDise6BjinWAo_qwS_4CTfy5gHcLl7NzUYV3OQ/edit#gid=0)
+Planning done on [Docs](https://docs.google.com/document/d/1SUU-MQVGj-NPa6bvhzdI0PtrXEQsS5-zq6cTfK4RK9Y/edit?usp=sharing)
 ### Requirements
 For development, you will only need Node.js installed on your environement.
 
