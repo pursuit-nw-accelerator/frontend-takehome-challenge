@@ -24,7 +24,7 @@ const User = ({ expanded, onClick, user }) => {
       </div>
       <div className="User__controls">
         <button className="toggleButton" onClick={onClick}>
-          {expanded ? "Close" : "Open"}
+          {expanded ? "Show less" : "Show more"}
         </button>
       </div>
     </section>
