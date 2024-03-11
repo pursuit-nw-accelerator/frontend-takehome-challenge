@@ -7,4 +7,4 @@
 
 
 ## Checklist
-![Requirements Checklist](https://docs.google.com/spreadsheets/d/1NtWa056CEexUk13gFfLbPnSFYiCVqQOAa87zEc5Kro8/edit#gid=0)
+[Requirements Checklist](https://docs.google.com/spreadsheets/d/1NtWa056CEexUk13gFfLbPnSFYiCVqQOAa87zEc5Kro8/edit#gid=0)
