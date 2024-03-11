@@ -12,7 +12,9 @@ d. Run `git clone 'https url' && cd $_ `.
 1. Run `npm install` to install dependencies.
 1. Start the server.<br/>
 a. Run `code .` to open project in code editor.<br/>
-b. Run `npm start` to start the server.
+b. Create '.env' file in root of project.
+c. Paste `REACT_APP_API_URL=https://users-app-backend.onrender.com` in `.env`.
+d. Run `npm start` to start the server.
 
 Your server is now running!
 Visit port specified `http://localhost:300?` on your browser and a list of users will be displayed.
