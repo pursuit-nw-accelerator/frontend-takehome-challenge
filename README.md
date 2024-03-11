@@ -8,6 +8,7 @@ Developed by Sabri Mohiuddin
 - [How to Run](#how-to-run)
 - [Features](#features)
 - [Technologies](#technologies)
+- [Development Process](#development-process)
 
 ## Introduction
 
@@ -39,3 +40,7 @@ The application will be served at `http://localhost:3000`.
 - **React.js**: Used for building the user interface components.
 - **CSS**: Styles the application to provide a visually appealing experience.
 - **JavaScript**: Powers the application logic and dynamic features.
+
+## Development Process
+
+For a detailed view of the development process including the implementation plan, testing, and build strategies, please refer to the [Implementation Table](https://docs.google.com/document/d/1_efD7fX2HcKBqvxQzU1XFsnoq0_NyQWDcOkgNOdrkX8/edit?usp=sharing) on Google Docs.
