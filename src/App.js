@@ -69,11 +69,15 @@ function App() {
             setExpandAll={setExpandAll}
             setCollapseAll={setCollapseAll}
           />
-          <Users
-            users={filteredUsers}
-            expanded={expanded}
-            setExpanded={setExpanded}
-          />
+          {filteredUsers.length ? (
+            <Users
+              users={filteredUsers}
+              expanded={expanded}
+              setExpanded={setExpanded}
+            />
+          ) : (
+            <h4>No users match the filters: {hobbies.join(', ')}</h4>
+          )}
         </>
       );
     }
