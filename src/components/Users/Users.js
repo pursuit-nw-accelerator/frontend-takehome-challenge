@@ -1,7 +1,7 @@
 import User from '../User/User';
 import './Users.css';
 
-const Users = ({users=[],toggle, onClick}) => {
+const Users = ({users, toggle, onClick}) => {
   return (
     <article className="Users">
       {users.map((user) => {
