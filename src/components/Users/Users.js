@@ -13,7 +13,7 @@ const Users = ({ users = [], hobbies, onClick, toggleAbout }) => {
           <User
             key={id}
             user={user}
-            toggleAbout={toggleAbout.includes(user.id)}
+            toggleAbout={toggleAbout?.includes(user.id)}
             onClick={() => onClick(user.id)}
           />
         );
