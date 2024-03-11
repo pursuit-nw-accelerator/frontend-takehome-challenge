@@ -4,15 +4,16 @@ import './App.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const API = process.env.REACT_API_URL
+const API = process.env.REACT_APP_API_URL;
 
 function App() {
   const [ users, setUsers ] = useState([]);
-  const [loading, setLoading ] = useState(false);
-  const [error, setError ] = useState("");
+  const [ loading, setLoading ] = useState(false);
+  const [ error, setError ] = useState("");
   //showmore and less liftup state from user comp
   const [ toggle, setToggle ] = useState([]);
   const [ selectedHobby, setSelectedHobby ] = useState([]);
+  const [ filteredUsers, setFilteredUsers ] = useState([]);
 
   const arr = [];
   users.forEach(user => arr.push(...user.hobbies));
@@ -49,7 +50,9 @@ function App() {
       let filteredUsers = users.filter(user => {
         return selectedHobby.every(selected => user.hobbies.includes(selected));
       });
-      setUsers(filteredUsers);
+      setFilteredUsers(filteredUsers);
+    }else {
+      setFilteredUsers(users)
     }
   }
   
@@ -59,7 +62,7 @@ const fetchData = async () =>  {
   try {
     setLoading(true);
     setError("");
-    const response = await fetch('https://users-app-backend.onrender.com/users');
+    const response = await fetch(`${API}/users`);
     const { data, error: errMessage } = await response.json();
     if(response.ok){
       setUsers(data);
@@ -79,7 +82,7 @@ useEffect(() => {
 
 useEffect(() => {
   filterByHobby()
-}, [selectedHobby])
+}, [selectedHobby,users])
 
   const renderContent = () => {
     if(loading) {
@@ -96,7 +99,7 @@ useEffect(() => {
           handleFilterBtnClick={handleFilterBtnClick}
           />
           <Users 
-          users={users}
+          users={filteredUsers}
           toggle={toggle}
           onClick={handleToggle} />
        </> )
