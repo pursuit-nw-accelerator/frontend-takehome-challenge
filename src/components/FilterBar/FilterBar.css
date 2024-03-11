@@ -18,3 +18,7 @@
     margin-right: 10px;
     width: 30%;
 }
+
+.active-button {
+    background: lightblue;
+}

@@ -13,15 +13,6 @@ function App() {
   const [expanded, setExpanded] = useState([]);
   const [hobbies, setHobbies] = useState([]);
 
-  const toggleHobby = hobby => {
-    if (hobbies.includes(hobby)) {
-      setHobbies(hobbies.filter(currHobby => currHobby !== hobby));
-    }
-    else {
-      setHobbies([...hobbies, hobby]);
-    }
-  }
-
   const setExpandAll = () => {
     const allIds = users.map(user => user.id);
     setExpanded(allIds);
@@ -74,9 +65,9 @@ function App() {
           <FilterBar
             users={users}
             hobbies={hobbies}
+            setHobbies={setHobbies}
             setExpandAll={setExpandAll}
             setCollapseAll={setCollapseAll}
-            toggleHobby={toggleHobby}
           />
           <Users
             users={filteredUsers}

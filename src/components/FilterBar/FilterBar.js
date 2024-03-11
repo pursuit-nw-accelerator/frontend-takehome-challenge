@@ -1,6 +1,6 @@
 import './FilterBar.css';
 
-const FilterBar = ({ users, hobbies, setExpandAll, setCollapseAll, toggleHobby }) => {
+const FilterBar = ({ users, hobbies, setHobbies, setExpandAll, setCollapseAll }) => {
   const allHobbies = [];
   users.forEach(user =>
     user.hobbies.forEach(hobby => {
@@ -9,6 +9,15 @@ const FilterBar = ({ users, hobbies, setExpandAll, setCollapseAll, toggleHobby }
       }
     })
   );
+
+  const toggleHobby = hobby => {
+    if (hobbies.includes(hobby)) {
+      setHobbies(hobbies.filter(currHobby => currHobby !== hobby));
+    }
+    else {
+      setHobbies([...hobbies, hobby]);
+    }
+  }
   
   return (
     <div>
@@ -19,7 +28,7 @@ const FilterBar = ({ users, hobbies, setExpandAll, setCollapseAll, toggleHobby }
             <button
               key={i}
               onClick={() => toggleHobby(hobby)}
-              style={allHobbies.includes(hobby) && {background: "lightblue"}}
+              className={hobbies.includes(hobby) ? 'active-button' : ''}
             >{hobby}</button>
           )}
         </div>
