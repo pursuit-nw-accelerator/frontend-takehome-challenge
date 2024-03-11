@@ -15,7 +15,7 @@ const Users = ({ users }) => {
   const toggleCollapseAll = () => {
     setShowAbout([])
   } 
-
+  
   //make sure to include id as a parameter
   const toggleShowAbout = (id) => {
     //if id is in the expanded state, remove it
