@@ -15,6 +15,8 @@ function App() {
   const fetchData = async () => {
     try {
       setLoading(true)
+      setTimeout(() => {
+      }, 5000)
       setError("")
       const response = await fetch("https://users-app-backend.onrender.com/users")
       const { data , error: errorMsg } = await response.json();
@@ -37,8 +39,11 @@ function App() {
         throw new Error(errorMsg)
       }
     } catch(err) {
+      console.log(err.message)
       setError(err.message);
     } finally {
+      console.log(loading)
+      console.log('Loading Complete!')
       setLoading(false)
     }
   };
