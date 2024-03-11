@@ -37,7 +37,6 @@ function App() {
 
   const handleFilterBtnClick = (hobby) => {
     let category = hobby.target.value
-    console.log(category);
     if(selectedHobby.includes(category)){
       setSelectedHobby(selectedHobby.filter(currHobby => currHobby !== category))
     }else {

@@ -39,7 +39,7 @@
 |                                  |                              | 5. Added onClick attribute to call handleByExpand and   |
 |                                  |                              |    handleByCollapse                                     |
 | Filter by hobbies                | 1. Click on hobbies button   | 1. Created selectedHobby state in App.js               |
-| (NOT WORKING AS INTENDED)        |                              | 2. Created handleFilterBtnClick function to add hobbies |
+|                                  |                              | 2. Created handleFilterBtnClick function to add hobbies |
 |                                  |                              | 3. Constructed filterByHobbies function to filter users |
 |                                  |                              |    based on hobbies                                     |
 |                                  |                              | 4. Passed selectedHobby and handleFilterBtnClick to     |
