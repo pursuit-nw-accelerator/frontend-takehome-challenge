@@ -1,6 +1,8 @@
+
+import React from 'react';
 import './User.css';
 
-const User = ({ user }) => {
+const User = ({ expanded, onClick, user }) => {
   const { about, age, company, country, name, photo } = user;
 
   return (
@@ -17,11 +19,13 @@ const User = ({ user }) => {
         </ul>
         <div className="User__about">
           <h3>About {name.split(' ')[0]}:</h3>
-          <p>{about}</p>
+          {expanded && <p>{about}</p>}
         </div>
       </div>
       <div className="User__controls">
-        <button>click me</button>
+        <button className="toggleButton" onClick={onClick}>
+          {expanded ? "Close" : "Open"}
+        </button>
       </div>
     </section>
   );

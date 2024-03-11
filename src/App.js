@@ -9,6 +9,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 function App() {
   // TODO: Fetch data here
   const [users, setUsers] = useState([]);
+  const [filterCriteria, setFilterCriteria] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -35,7 +36,9 @@ function App() {
     fetchData();
   }, []);
 
+  const handleFilterChange = () => {
 
+  }
 
   const renderContent = () => {
     if (loading) {
@@ -46,7 +49,7 @@ function App() {
       return (
     <div>
       <h1>Our Users</h1>
-      <FilterBar />
+      <FilterBar filterBar={filterCriteria} onFilterChange={handleFilterChange} />
       <Users users={users} />
     </div>
   );
