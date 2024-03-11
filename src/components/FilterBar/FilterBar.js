@@ -1,6 +1,6 @@
 import './FilterBar.css';
 
-const FilterBar = ({ users, hobbies, setHobbies, setExpandAll, setCollapseAll }) => {
+const FilterBar = ({ users, hobbies, setHobbies, handleExpandAll, handleCollapseAll }) => {
   const allHobbies = [];
   users.forEach(user =>
     user.hobbies.forEach(hobby => {
@@ -20,7 +20,7 @@ const FilterBar = ({ users, hobbies, setHobbies, setExpandAll, setCollapseAll })
   }
   
   return (
-    <div>
+    <div className='filter-bar'>
       <h2>Filter by hobby</h2>
       <div className='filter-expand'>
         <div className='filter-buttons'>
@@ -33,8 +33,8 @@ const FilterBar = ({ users, hobbies, setHobbies, setExpandAll, setCollapseAll })
           )}
         </div>
         <div className='expand-buttons'>
-          <button onClick={setExpandAll}>Expand All</button>
-          <button onClick={setCollapseAll}>Collapse All</button>
+          <button onClick={handleExpandAll}>Expand All</button>
+          <button onClick={handleCollapseAll}>Collapse All</button>
         </div>
       </div>
     </div>

@@ -13,12 +13,12 @@ function App() {
   const [expanded, setExpanded] = useState([]);
   const [hobbies, setHobbies] = useState([]);
 
-  const setExpandAll = () => {
+  const handleExpandAll = () => {
     const allIds = users.map(user => user.id);
     setExpanded(allIds);
   }
 
-  const setCollapseAll = () => {
+  const handleCollapseAll = () => {
     setExpanded([]);
   }
 
@@ -66,8 +66,8 @@ function App() {
             users={users}
             hobbies={hobbies}
             setHobbies={setHobbies}
-            setExpandAll={setExpandAll}
-            setCollapseAll={setCollapseAll}
+            handleExpandAll={handleExpandAll}
+            handleCollapseAll={handleCollapseAll}
           />
           {filteredUsers.length ? (
             <Users

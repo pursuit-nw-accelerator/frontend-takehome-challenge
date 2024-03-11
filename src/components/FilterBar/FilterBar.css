@@ -1,3 +1,7 @@
+.filter-bar h2 {
+    margin-top: 40px;
+}
+
 .filter-expand {
     display: flex;
     flex-direction: row;
@@ -20,5 +24,6 @@
 }
 
 .active-button {
-    background: lightblue;
+    background: #d0ffd0;
+    border-radius: 3px;
 }
