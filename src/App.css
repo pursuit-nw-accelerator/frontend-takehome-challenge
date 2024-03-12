@@ -2,5 +2,31 @@
     width: 60vw;
     height: 100vh;
     margin: 0 auto;
+    padding: 20px;
 }
 
+.Loading, .Error {
+    margin-bottom: 20px;
+}
+  
+.ButtonGroup {
+    margin-top: 20px;
+}
+
+.Buttons {
+    margin-top: 20px;
+}
+  
+.Buttons button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.Buttons button:hover {
+    background-color: #0056b3;
+}
