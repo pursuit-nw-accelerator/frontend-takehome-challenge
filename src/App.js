@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FilterBar from './components/FilterBar/FilterBar';
 import Users from './components/Users/Users';
 import './App.css';
@@ -7,10 +7,9 @@ import './App.css';
 const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
-  // TODO: Fetch data here
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState([]);
   const [selectedHobbies, setSelectedHobbies] = useState([]);
   const [allHobbies, setAllHobbies] = useState([]);
 
@@ -19,10 +18,10 @@ function App() {
       setLoading(true);
       setError("");
       const response = await fetch(`${API_URL}/users`);
-      console.log(response);
       const { data, error: errorMsg } = await response.json();
       if (response.ok) {
         setUsers(data);
+        updateAllHobbies(data);
       } else {
         throw new Error(errorMsg);
       }
@@ -31,6 +30,22 @@ function App() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const updateAllHobbies = (usersData) => {
+    const uniqueHobbies = usersData.reduce((hobbies, user) => {
+      user.hobbies.forEach((hobby) => {
+        if (!hobbies.includes(hobby)) {
+          hobbies.push(hobby);
+        }
+      });
+      return hobbies;
+    }, []);
+
+    // Manually add a new hobby for testing
+    // uniqueHobbies.push("Don't sellect this bogus hobby");
+
+    setAllHobbies(uniqueHobbies);
   };
 
   useEffect(() => {
@@ -76,8 +91,8 @@ function App() {
       );
     }
   };
-    return <div className="App">{renderContent()}</div>;
 
+  return <div className="App">{renderContent()}</div>;
 }
 
 export default App;
