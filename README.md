@@ -1,5 +1,8 @@
 # Front End Takehome Challenege
 
+## Google Chart (Functions, How To Test and Build)
+https://docs.google.com/spreadsheets/d/1Ti62ABfqEfRhPFP8st8eBJPUOMwomiAy7sBBiK9W8LY/edit#gid=0
+
 ## Getting started and submitting
 1. Fork and clone the repo
 2. run `npm install` to install, then `npm start` to start.
