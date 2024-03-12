@@ -39,11 +39,9 @@ function App() {
           hobbies.push(hobby);
         }
       });
-      return hobbies;
+      return hobbies.sort();
     }, []);
 
-    // Manually add a new hobby for testing
-    // uniqueHobbies.push("Don't sellect this bogus hobby");
 
     setAllHobbies(uniqueHobbies);
   };
