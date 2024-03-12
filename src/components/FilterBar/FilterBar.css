@@ -1,0 +1,24 @@
+.FilterBar {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+  .hobby-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-right: 40px;
+    padding: 20px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .selected {
+    background-color: lightskyblue;
+  }
+  
