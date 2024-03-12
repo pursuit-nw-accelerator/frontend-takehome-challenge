@@ -18,7 +18,7 @@ npm install
 
  **Configure App**: Add API variable in the environmental file:
 ```bash
-REACT_APP_URL=<url>
+REACT_APP_API_URL=<url>
 ```
 
 ### Start
