@@ -1,0 +1,19 @@
+/* filterBar.css */
+
+.FilterBar {
+    display: flex wrap;
+    gap: 10px;
+  }
+  
+  .FilterBar button {
+    background-color: #ddd; 
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .FilterBar button.selected {
+    background-color: #4caf50; 
+    color: white; 
+  }
+  
