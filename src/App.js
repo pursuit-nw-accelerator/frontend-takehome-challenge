@@ -70,7 +70,7 @@ function App() {
     setExpanded([]);
   };
 
-  // Render content for loading, error, and selected filters
+  // Render content 
   const renderContent = () => {
     const filteredUsers = users.filter((user) =>
       selectedHobbies.every((selectedHobby) => user.hobbies.includes(selectedHobby))
