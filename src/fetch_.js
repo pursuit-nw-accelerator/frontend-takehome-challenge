@@ -5,7 +5,7 @@ const fetchItems = async ({ dataCallabck, error, waiting } = {}) => {
 
     if (waiting) waiting(true);
 
-    const res = await fetch(`${API_URL}/`);
+    const res = await fetch(`${API_URL}/users`);
     const { data, error } = await res.json();
 
     if (res.ok) {

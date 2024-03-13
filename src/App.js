@@ -9,6 +9,7 @@ function App() {
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(true);
   const [hobbies, setHobbies] = useState({});
+
   // TODO: Fetch data here
   useEffect(() => {
     setErrorMsg("");
@@ -56,6 +57,12 @@ function App() {
     newUsersObj[id].showAbout = !newUsersObj[id].showAbout;
     setUsers(newUsersObj);
   }
+  //event
+  const hobbyButtonClick = (hobby) => {
+    const newHobbies = { ...hobbies };
+    newHobbies[hobby].selected = !newHobbies[hobby].selected;
+    setHobbies(newHobbies);
+  }
   //render components
   const renderStatus = () => {
     if (errorMsg !== "") {
@@ -72,7 +79,7 @@ function App() {
         <FilterBar
           allUsersAboutStatus={{ expand: showAllUsersAbout, collapse: hideAllUsersAbout }}
           hobbies={hobbies}
-          setHobbies={setHobbies}
+          hobbyButtonClick={hobbyButtonClick}
         />
         <Users
           users={Object.values(filterUsers(users, hobbies, setHobbies))}
@@ -88,22 +95,16 @@ function App() {
 
     // users
     const usersByHobbies = {};
+    const hobbiesFromHobbyBar = new Set();
+    for (let hobby in hobbies) {
+      if (hobbies[hobby].selected) hobbiesFromHobbyBar.add(hobby);
+    }
+
     for (let id in users) {
-      const hobbiesSet = new Set(users[id].hobbies);
-      let rangeChecker = true;
-      for (let hobby in hobbies) {
-        if (hobbies[hobby].selected === false) continue;
-
-        if (!hobbiesSet.has(hobby)) {
-          rangeChecker = false;
-          break;
-        }
-      }
-
-      if (rangeChecker) {
+      const userHobbiesSet = new Set(users[id].hobbies);
+      if (hobbiesFromHobbyBar.intersection(userHobbiesSet).size === hobbiesFromHobbyBar.size) {
         usersByHobbies[id] = users[id];
       }
-
     }
     return usersByHobbies;
   }

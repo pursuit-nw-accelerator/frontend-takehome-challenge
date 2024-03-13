@@ -1,13 +1,8 @@
 import './FilterBar.css';
 
-const FilterBar = ({ hobbies, setHobbies, allUsersAboutStatus }) => {
+const FilterBar = ({ hobbies, hobbyButtonClick, allUsersAboutStatus }) => {
 
-  //event
-  const hobbyButtonClick = (hobby) => {
-    const newHobbies = { ...hobbies };
-    newHobbies[hobby].selected = !newHobbies[hobby].selected;
-    setHobbies(newHobbies);
-  }
+
   //render
   const renderHobbiesButtons = () => {
 

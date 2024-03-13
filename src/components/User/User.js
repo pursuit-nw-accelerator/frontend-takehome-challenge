@@ -24,7 +24,7 @@ const User = ({ user, singleUserAboutToggle }) => {
         }
       </div>
       <div className="User__controls">
-        <button onClick={() => singleUserAboutToggle(id)}>click me</button>
+        <button onClick={() => singleUserAboutToggle(id)}>{showAbout ? "show less" : "show more"}</button>
       </div>
     </section>
   );
