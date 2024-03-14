@@ -22,4 +22,3 @@ const FilterBar = ({ eventHandler, filter = [] }) => {
 };
 
 export default FilterBar;
-
