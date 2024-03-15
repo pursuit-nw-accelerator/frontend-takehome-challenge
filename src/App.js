@@ -10,14 +10,43 @@ function App() {
   const [ users, setUsers ] = useState([]);
   const [ loading, setLoading ] = useState(false);
   const [ error, setError ] = useState("");
-  //showmore and less liftup state from user comp
+  // liftup state from user comp
   const [ toggle, setToggle ] = useState([]);
   const [ selectedHobby, setSelectedHobby ] = useState([]);
-  const [ filteredUsers, setFilteredUsers ] = useState([]);
 
-  const arr = [];
-  users.forEach(user => arr.push(...user.hobbies));
-  const hobbyList = arr.filter((el, i, arr) => arr.indexOf(el) === i).sort()
+
+  // TODO: Fetch data here
+const fetchData = async () =>  {
+  try {
+    setLoading(true);
+    setError("");
+    const response = await fetch(`${API}/users`);
+    const { data, error: errMessage } = await response.json();
+    if(response.ok){
+      setUsers(data);
+    }else {
+      throw new Error(errMessage)
+    }
+  }catch(err) {
+    setError(err.message)
+  }finally {
+    setLoading(false)
+  }
+}
+
+useEffect(() => {
+  fetchData()
+},[]);
+
+
+const allHobbies = new Set();
+users.forEach(user =>
+  user.hobbies.forEach(hobby => {
+    allHobbies.add(hobby);
+  })
+);
+const uniqueHobby = Array.from(allHobbies).sort();
+
 
   const handleToggle = (id) => {
     if(toggle.includes(id)){
@@ -44,44 +73,9 @@ function App() {
     }
   }
   
-  const filterByHobby = () => {
-    if (selectedHobby.length > 0) {
-      let filteredUsers = users.filter(user => {
-        return selectedHobby.every(selected => user.hobbies.includes(selected));
-      });
-      setFilteredUsers(filteredUsers);
-    }else {
-      setFilteredUsers(users)
-    }
-  }
-  
-
-// TODO: Fetch data here
-const fetchData = async () =>  {
-  try {
-    setLoading(true);
-    setError("");
-    const response = await fetch(`${API}/users`);
-    const { data, error: errMessage } = await response.json();
-    if(response.ok){
-      setUsers(data);
-    }else {
-      throw new Error(errMessage)
-    }
-  }catch(err) {
-    setError(err.message)
-  }finally {
-    setLoading(false)
-  }
-}
-
-useEffect(() => {
-  fetchData()
-},[]);
-
-useEffect(() => {
-  filterByHobby()
-}, [selectedHobby,users])
+  const filteredUsers = users.filter(user => 
+    selectedHobby.every(hobby => user.hobbies.includes(hobby))
+  );
 
   const renderContent = () => {
     if(loading) {
@@ -91,16 +85,20 @@ useEffect(() => {
     }else {
      return( <>
           <FilterBar 
-          hobbyList={hobbyList} 
+          hobbyList={uniqueHobby} 
           handleByCollapse={handleByCollapse} 
           handleByExpand={handleByExpand} 
           selectedHobby={selectedHobby}
           handleFilterBtnClick={handleFilterBtnClick}
           />
-          <Users 
+          {filteredUsers.length ? 
+          (<Users 
           users={filteredUsers}
           toggle={toggle}
-          onClick={handleToggle} />
+          onClick={handleToggle} />) 
+          : <div className='nomatch'>No users match the filters: {selectedHobby.join(', ')}</div>
+         }
+          
        </> )
     }
   }
