@@ -24,11 +24,12 @@
 
 .hobby:hover:focus {
     cursor: pointer;
-    background-color: rgba(0, 0, 255, 0.468);
 }
+
 .hobby:hover {
     cursor: pointer;
 }
+
 .active {
     background-color: #1e293b;
     color: #fff;
