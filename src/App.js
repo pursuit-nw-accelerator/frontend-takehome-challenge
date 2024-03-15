@@ -22,6 +22,15 @@ function App() {
     setExpanded([]);
   }
 
+  const toggleExpanded = (id) => {
+    if (expanded.includes(id)) {
+      setExpanded(expanded.filter(currId => currId !== id));
+    }
+    else {
+      setExpanded([...expanded, id]);
+    }
+  };
+
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -73,7 +82,7 @@ function App() {
             <Users
               users={filteredUsers}
               expanded={expanded}
-              setExpanded={setExpanded}
+              toggleExpanded={toggleExpanded}
             />
           ) : (
             <h4>No users match the filters: {hobbies.join(', ')}</h4>
