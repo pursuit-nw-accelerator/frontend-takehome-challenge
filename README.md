@@ -6,11 +6,39 @@
 ### Instructions to Run the Server Locally
 
 1. Clone the repository.
-2. Install dependencies by running -- npm install
-3. Start the server by running -- npm start
-4. The server should now be running locally.
+2. Install dependencies by running -- `npm install`
+3. Create `.env` file.
+4. Add `REACT_APP_API_URL=https://users-app-backend.onrender.com` in `.env`
+5. Start the server by running -- `npm start`
+6. The server should now be running locally.
 
 ## Markdown Table
+
+
+| Comment                                                         | How I fixed it                                                |
+|-----------------------------------------------------------------|--------------------------------------------------------------|
+| 1. filter by hobbies                                            | - Removed useEffect and state, filtered users with a ternary |
+|    If no results match the selected filters, the app should     |   based on a variable. Used ternary to render users if      |
+|    display No results for {comma separated list of              |   filtered users length is true, else "no match found with  |
+|    selected filters}                                            |   selected hobbies".                                         |
+|                                                                 |                                                              |
+| 2. README                                                       | - Updated README with instructions on how to add .env file.  |
+|    "Instructions for the environment variable are missing"       |                                                              |
+|                                                                 |                                                              |
+| 3. No fancy styling for its own sake                            | - Removed styling for "Expand All" and "Collapse All".       |
+|    "Some hover styling was added to the Expand All / Collapse All|   Buttons as it appeared inconsistently.                    |
+|    buttons, but it appears inconsistently"                      |                                                              |
+|                                                                 |                                                              |
+| 4. Lifting state up                                             | - Changed filteredUser state to a variable, removed         |
+|    "There are some issues here but the components were not      |   useEffect used for filtering users.                        |
+|    moved around"                                                |                                                              |
+|                                                                 |                                                              |
+| 5. No errors or warnings in console                            | - Resolved eslint warnings, no warnings present now.        |
+|    "There are eslint warnings in the terminal when I run npm    |                                                              |
+|    start"                                                       |                                                              |
+
+
+
 
 | Requirement                      | How I'll Test It             | How I'll Build It                                      |
 |----------------------------------|------------------------------|--------------------------------------------------------|
@@ -40,12 +68,15 @@
 |                                  |                              |    handleByCollapse                                     |
 | Filter by hobbies                | 1. Click on hobbies button   | 1. Created selectedHobby state in App.js               |
 |                                  |                              | 2. Created handleFilterBtnClick function to add hobbies |
-|                                  |                              | 3. Constructed filterByHobbies function to filter users |
-|                                  |                              |    based on hobbies                                     |
+|                                  |                              | 3. filtered users based on wheather every selectedhobbies |
+|                                  |                              |    are in each user bobbies array.                      |
 |                                  |                              | 4. Passed selectedHobby and handleFilterBtnClick to     |
 |                                  |                              |    FilterBar component                                  |
-|                                  |                              | 5.used useEffect to run filterByHobbies with 
-|                                  |                              |   selectedHobby as dependecy.
+|                                  |                              | 
+|                                  |                              |   
 |                                  |                              | 5. Received selectedHobby and handleFilterBtnClick as   |
 |                                  |                              |    props in FilterBar component                         |
 |                                  |                              | 6. onClick event calls handleFilterBtnClick             |
+|                                  |                              | 7. if no match is found then "no match found with       |
+|                                  |                              |    selected hobbies" is rendered. 
+
