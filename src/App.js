@@ -25,7 +25,7 @@ const App = () => {
       setError("");
       setLoading(true);
 
-      const response = await fetch(API);
+      const response = await fetch(`${API}/users`);
       const { data, error: errorMsg } = await response.json();
 
       if (response.ok) {
