@@ -55,7 +55,34 @@ function App() {
   const filteredUsers = users.filter((user) =>
     hobbySelected.every((hobby) => user.hobbies.includes(hobby))
   );
+  
+  const getAllHobbies = (arr) =>{
+    let set = new Set();
+    
+    if (!arr) {
+      
+      return
+    }
+    
+    for (let i = 0; i < arr.length; i++) {
+      const hobbies = arr[i].hobbies;
+      for (let j = 0; j < hobbies.length; j++) {
+        set.add(hobbies[j]);
+      }
+    }
+    
+    return Array.from(set);
+  }
 
+  const handleExpandAll = () => {
+    const newExpanded = users.map((user) => user.id);
+    setToggleAbout(newExpanded);
+  };
+
+  const handleCollapseAll = () => {
+    setToggleAbout([]);
+  };
+  
   const renderContent = () => {
     if (loading) {
       return <div>Loading...</div>;
@@ -65,10 +92,11 @@ function App() {
       return (
         <div>
           <FilterBar
-            users={users}
+            getAllHobbies={getAllHobbies(users)}
             onClick={handleHobbySelected}
             hobbySelected={hobbySelected}
-            setToggleAbout={setToggleAbout}
+            handleExpandAll={handleExpandAll}
+            handleCollapseAll={handleCollapseAll}
           />
           <Users users={filteredUsers} hobbies={hobbySelected} toggleAbout={toggleAbout} onClick={handleExpandAbout} />
         </div>
