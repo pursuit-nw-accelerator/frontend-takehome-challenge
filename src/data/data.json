@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "age": 35,
+    "name": "Teddie Doodle",
+    "company": "BUZZWORKS",
+    "country": "Greenland",
+    "photo": "https://randomuser.me/api/portraits/lego/0.jpg",
+    "about": "Hi there! I'm Teddie Doodle, a 35-year-old from Greenland. I work at BUZZWORKS, where I'm passionate about what I do and always strive to exceed expectations. In my free time, I love to spend time with my loved ones and take on new adventures. I'm excited to see what the future holds and what opportunities lie ahead.",
+    "hobbies": ["yoga", "board games", "video games", "tennis"]
+  },
+  {
+    "id": 2,
+    "age": 29,
+    "name": "Peter Parker",
+    "company": "Stark Industries",
+    "country": "Romania",
+    "photo": "https://randomuser.me/api/portraits/lego/1.jpg",
+    "about": "Peter is an intern at Stark Industries. His favorite borough is Queens",
+    "hobbies": ["golf", "cooking", "podcasts", "painting"]
+  },
+  {
+    "id": 3,
+    "age": 27,
+    "name": "Harry Potter",
+    "company": "Hogwarts",
+    "country": "United Kingdom",
+    "photo": "https://randomuser.me/api/portraits/lego/2.jpg",
+    "about": "Harry Potter and the Chamber of Secrets describes Harry's second year at Hogwarts. Students are attacked and petrified by an unknown creature; wizards of Muggle parentage are the primary targets. The attacks appear related to the mythical Chamber of Secrets and resemble attacks fifty years earlier. ",
+    "hobbies": ["board games", "traveling", "reading"]
+  },
+  {
+    "id": 4,
+    "age": 61,
+    "name": "Ronald Mcdonald",
+    "company": "McDonalds",
+    "country": "United States",
+    "photo": "https://randomuser.me/api/portraits/lego/3.jpg",
+    "about": "Ronald McDonald is a clown character used as the primary mascot of the McDonald's fast-food restaurant chain. He inhabits the fictional world of McDonaldland, with his friends Mayor McCheese, the Hamburglar, Grimace, Birdie the Early Bird and The Fry Kids.",
+    "hobbies": ["cooking", "music", "shopping"]
+  }
+]
