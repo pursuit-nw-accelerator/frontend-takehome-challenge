@@ -11,7 +11,7 @@ function App() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [expanded, setExpanded] = useState([]);
-  const [hobbies, setHobbies] = useState([]);
+  const [filterHobbies, setFilterHobbies] = useState([]);
 
   const handleExpandAll = () => {
     const allIds = users.map(user => user.id);
@@ -30,6 +30,15 @@ function App() {
       setExpanded([...expanded, id]);
     }
   };
+
+  const toggleFilterHobby = hobby => {
+    if (filterHobbies.includes(hobby)) {
+      setFilterHobbies(filterHobbies.filter(currHobby => currHobby !== hobby));
+    }
+    else {
+      setFilterHobbies([...filterHobbies, hobby]);
+    }
+  }
 
   const fetchData = async () => {
     try {
@@ -57,8 +66,17 @@ function App() {
     fetchData();
   }, []);
 
+  const allHobbies = [];
+  users.forEach(user =>
+    user.hobbies.forEach(hobby => {
+      if (!allHobbies.includes(hobby)) {
+        allHobbies.push(hobby);
+      }
+    })
+  );
+
   const filteredUsers = users.filter(user => 
-    hobbies.every(hobby => user.hobbies.includes(hobby))
+    filterHobbies.every(hobby => user.hobbies.includes(hobby))
   );
 
   const renderContent = () => {
@@ -72,9 +90,9 @@ function App() {
       return (
         <>
           <FilterBar
-            users={users}
-            hobbies={hobbies}
-            setHobbies={setHobbies}
+            allHobbies={allHobbies}
+            filterHobbies={filterHobbies}
+            toggleFilterHobby={toggleFilterHobby}
             handleExpandAll={handleExpandAll}
             handleCollapseAll={handleCollapseAll}
           />
@@ -85,7 +103,7 @@ function App() {
               toggleExpanded={toggleExpanded}
             />
           ) : (
-            <h4>No users match the filters: {hobbies.join(', ')}</h4>
+            <h4>No users match the filters: {filterHobbies.join(', ')}</h4>
           )}
         </>
       );
