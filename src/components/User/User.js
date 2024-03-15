@@ -1,7 +1,23 @@
-import './User.css';
+import "./User.scss";
 
-const User = ({ user }) => {
-  const { about, age, company, country, name, photo } = user;
+const User = ({ user, handleExpandedList, onClick, selectedHobbies }) => {
+  const { about, age, company, country, hobbies, name, photo } = user;
+
+  const renderSelectedHobbies = () => {
+    return hobbies.map((hobby, index) => {
+      if (selectedHobbies.includes(hobby)) {
+        return (
+          <span key={index}>
+            <span className="highlight" style={{ color: "lightgreen" }}>
+              {hobby}
+            </span>
+            {index === hobbies.length - 1 ? "" : ", "}
+          </span>
+        );
+      }
+      return hobby + (index === hobbies.length - 1 ? "" : ", ");
+    });
+  };
 
   return (
     <section className="User">
@@ -14,14 +30,19 @@ const User = ({ user }) => {
           <li>Age: {age}</li>
           <li>Country: {country}</li>
           <li>Company: {company}</li>
+          <li>Hobbies: {renderSelectedHobbies()}</li>
         </ul>
-        <div className="User__about">
-          <h3>About {name.split(' ')[0]}:</h3>
-          <p>{about}</p>
-        </div>
+        {handleExpandedList && (
+          <div className="User__about">
+            <h3>About {name.split(" ")[0]}:</h3>
+            <p>{about}</p>
+          </div>
+        )}
       </div>
       <div className="User__controls">
-        <button>click me</button>
+        <button onClick={onClick}>
+          {handleExpandedList ? "Show Less" : "Show More"}
+        </button>
       </div>
     </section>
   );
