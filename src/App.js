@@ -13,6 +13,34 @@ function App() {
   const [error, setError] = useState('');
   const [expanded, setExpanded] = useState([]);
 
+  const handleToggleHobby = (hobby) => {
+    if (selectedHobbies.includes(hobby)) {
+      const newHobbies = selectedHobbies.filter((currHobby) => currHobby !== hobby);
+      setSelectedHobbies(newHobbies);
+    } else {
+      const newHobbies = [...selectedHobbies, hobby];
+      setSelectedHobbies(newHobbies);
+    }
+  };
+
+  const toggleExpand = (id) => {
+    if (expanded.includes(id)) {
+      const newExpanded = expanded.filter((currID) => currID !== id);
+      setExpanded(newExpanded);
+    } else {
+      const newExpanded = [...expanded, id];
+      setExpanded(newExpanded);
+    }
+  };
+
+  const handleToggleAll = () => {
+    setExpanded(users.map((user) => user.id));
+  };
+
+  const handleToggleCollapseAll = () => {
+    setExpanded([]);
+  };
+
   const fetchData = async () => {
     try {
       setLoading(true)
@@ -49,14 +77,18 @@ function App() {
         <h1>Our Users</h1>
         <FilterBar
           users={users}
+          selectedHobbies={selectedHobbies}
           setExpanded={setExpanded}
-          setSelectedHobbies={setSelectedHobbies}
-          selectedHobbies={selectedHobbies} />
+          handleToggleHobby={handleToggleHobby}
+          handleToggleAll={handleToggleAll}
+          handleToggleCollapseAll={handleToggleCollapseAll}
+        />
         <Users
           users={hobbiesToDisplay}
           expanded={expanded}
           setExpanded={setExpanded}
-          selectedHobbies={selectedHobbies} />
+          selectedHobbies={selectedHobbies}
+          toggleExpand={toggleExpand} />
       </div>);
     }
   };
