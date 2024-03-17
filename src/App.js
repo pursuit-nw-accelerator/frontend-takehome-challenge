@@ -45,7 +45,7 @@ function App() {
     try {
       setLoading(true)
       setError('');
-      const response = await fetch(`${API_URL}users`);
+      const response = await fetch(`${API_URL}/users`);
       const { data, error: errorMsg } = await response.json();
       if (response.ok) {
         setUsers(data)
