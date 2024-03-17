@@ -72,7 +72,10 @@ function App() {
 
   const renderContent = () => {
     if (loading) {
-      return <div className="Loading">Loading...</div>;
+      return <div className="Loading">
+        <div className="loading-circle"></div>
+        <div>Loading...</div>
+      </div>;
     } else if (error) {
       return <div className="Error">Error: {error} </div>;
     } else {
@@ -93,6 +96,7 @@ function App() {
       </div>);
     }
   };
+  
   return <div className="App">{renderContent()}</div>;
 
 
