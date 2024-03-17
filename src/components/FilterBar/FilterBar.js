@@ -1,7 +1,6 @@
 import './FilterBar.css';
 
-const FilterBar = ({ selectedHobbies, handleToggleHobby, handleToggleAll, handleToggleCollapseAll, listOfHobbies={listOfHobbies} }) => {
-
+const FilterBar = ({ selectedHobbies, handleToggleHobby, handleToggleAll, handleToggleCollapseAll, listOfHobbies }) => {
 
   return(
   <div className='filterBar'>

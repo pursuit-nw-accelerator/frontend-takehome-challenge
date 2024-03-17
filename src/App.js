@@ -81,7 +81,6 @@ function App() {
         <FilterBar
           selectedHobbies={selectedHobbies}
           listOfHobbies={listOfHobbies}
-          setExpanded={setExpanded}
           handleToggleHobby={handleToggleHobby}
           handleToggleAll={handleToggleAll}
           handleToggleCollapseAll={handleToggleCollapseAll}
@@ -90,7 +89,6 @@ function App() {
           users={hobbiesToDisplay}
           expanded={expanded}
           selectedHobbies={selectedHobbies}
-          setExpanded={setExpanded}
           toggleExpand={toggleExpand} />
       </div>);
     }
