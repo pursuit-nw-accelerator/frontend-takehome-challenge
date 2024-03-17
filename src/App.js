@@ -62,6 +62,9 @@ function App() {
   const hobbiesToDisplay = users.filter((user) =>
     selectedHobbies.every(selectedHobby => user.hobbies.includes(selectedHobby))
   );
+  
+  const listOfHobbies = Array.from(new Set(users.flatMap(user => user.hobbies)))
+  .sort((a, b) => a.localeCompare(b));
 
   useEffect(() => {
     fetchData();
@@ -76,8 +79,8 @@ function App() {
       return (<div className="App">
         <h1>Our Users</h1>
         <FilterBar
-          users={users}
           selectedHobbies={selectedHobbies}
+          listOfHobbies={listOfHobbies}
           setExpanded={setExpanded}
           handleToggleHobby={handleToggleHobby}
           handleToggleAll={handleToggleAll}
@@ -86,8 +89,8 @@ function App() {
         <Users
           users={hobbiesToDisplay}
           expanded={expanded}
-          setExpanded={setExpanded}
           selectedHobbies={selectedHobbies}
+          setExpanded={setExpanded}
           toggleExpand={toggleExpand} />
       </div>);
     }

@@ -1,9 +1,7 @@
 import './FilterBar.css';
 
-const FilterBar = ({ users, selectedHobbies, handleToggleHobby, handleToggleAll, handleToggleCollapseAll }) => {
+const FilterBar = ({ selectedHobbies, handleToggleHobby, handleToggleAll, handleToggleCollapseAll, listOfHobbies={listOfHobbies} }) => {
 
-  const listOfHobbies = Array.from(new Set(users.flatMap(user => user.hobbies)))
-    .sort((a, b) => a.localeCompare(b));
 
   return(
   <div className='filterBar'>
