@@ -1,0 +1,16 @@
+.filterBar{
+    display: flex;
+}
+.hobbyList{
+    width: 70%;
+}
+.expandCollapseAll{
+    width: 30%;
+}
+
+.selected{
+    background-color: lightblue;
+}
+.hobbyButton{
+    cursor: pointer;
+}
