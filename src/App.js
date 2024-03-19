@@ -27,7 +27,7 @@ function App() {
       setLoading(true);
       setError("");
 
-      const res = await fetch(`${url}`);
+      const res = await fetch(`${url}/users`);
       const { data, error: errorMessage } = await res.json();
 
       if (res.ok) {
@@ -44,6 +44,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderContent = () => {

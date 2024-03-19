@@ -6,5 +6,5 @@
   display: flex;
   gap: 0.5rem;
   cursor: pointer;
-  justify-content: end;
+  justify-content: flex-end;
 }
