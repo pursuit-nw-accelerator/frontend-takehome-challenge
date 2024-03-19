@@ -67,7 +67,7 @@ function App() {
   const renderStatus = () => {
     if (errorMsg !== "") {
 
-      return <div>{errorMsg}</div>
+      return <div>Error: {errorMsg}</div>
 
     } else if (loading) {
 
