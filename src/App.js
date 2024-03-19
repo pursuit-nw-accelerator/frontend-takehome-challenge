@@ -13,24 +13,31 @@ function App() {
   const [selectedHobbies, setSelectedHobbies] = useState([]);
   const [allHobbies, setAllHobbies] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      setError("");
-      const response = await fetch(`${API_URL}/users`);
-      const { data, error: errorMsg } = await response.json();
-      if (response.ok) {
-        setUsers(data);
-        updateAllHobbies(data);
-      } else {
-        throw new Error(errorMsg);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const response = await fetch(`${API_URL}/users`);
+        const { data, error: errorMsg } = await response.json();
+        if (response.ok) {
+          setUsers(data);
+          updateAllHobbies(data);
+        } else {
+          throw new Error(errorMsg);
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
+  
+    fetchData();
+  }, []);
+  
+
 
   const updateAllHobbies = (usersData) => {
     const uniqueHobbies = usersData.reduce((hobbies, user) => {
@@ -42,13 +49,9 @@ function App() {
       return hobbies.sort();
     }, []);
 
-
     setAllHobbies(uniqueHobbies);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const handleFilterChange = (hobby) => {
     setSelectedHobbies((prevSelectedHobbies) => {
@@ -69,12 +72,6 @@ function App() {
       return <div className="Loading">Loading...</div>;
     } else if (error) {
       return <div className="Error">Error: {error} </div>;
-    } else if (filteredUsers.length === 0 && selectedHobbies.length > 0) {
-      return (
-        <div className="NoUsers">
-          No users match the filters: {selectedHobbies.join(', ')}
-        </div>
-      );
     } else {
       return (
         <div>
@@ -84,11 +81,18 @@ function App() {
             onFilterChange={handleFilterChange}
             allHobbies={allHobbies}
           />
-          <Users users={filteredUsers} />
+          {filteredUsers.length === 0 && selectedHobbies.length > 0 ? (
+            <div className="NoUsers">
+              No users match the filters: {selectedHobbies.join(', ')}
+            </div>
+          ) : (
+            <Users users={filteredUsers} />
+          )}
         </div>
       );
     }
   };
+  
 
   return <div className="App">{renderContent()}</div>;
 }

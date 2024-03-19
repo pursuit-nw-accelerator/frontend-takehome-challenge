@@ -3,7 +3,7 @@ import React from 'react';
 import './User.css';
 
 const User = ({ expanded, onClick, user }) => {
-  const { about, age, company, country, name, photo } = user;
+  const { about, age, company, country, name, photo, hobbies } = user;
 
   return (
     <section className="User">
@@ -16,7 +16,9 @@ const User = ({ expanded, onClick, user }) => {
           <li>Age: {age}</li>
           <li>Country: {country}</li>
           <li>Company: {company}</li>
+          <li>Hobbies: {hobbies.join(", ")}</li>
         </ul>
+
         <div className="User__about">
           <h3>About {name.split(' ')[0]}:</h3>
           {expanded && <p>{about}</p>}
