@@ -74,6 +74,7 @@ function App() {
       }
     })
   );
+  allHobbies.sort();
 
   const filteredUsers = users.filter(user => 
     filterHobbies.every(hobby => user.hobbies.includes(hobby))
