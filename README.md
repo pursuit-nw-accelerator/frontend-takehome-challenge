@@ -38,6 +38,7 @@ Each user has a list of `hobbies`. Some hobbies are shared by many users, and so
 ## Non functional requirements
 These requirements demonstrate your work quality, reliability, and professionalism as a software engineer. They are just as important as the functional requirements, and you will not pass if any of these are unmet.
 
+1. Before you write any code, create a table with three columns: **Requirement**, **How I'll test it**, **How I'll build it** and describe how you'll handle each of the requirements. You will probably want to break some requirements down into smaller pieces. **Include a link to the table document in your README file.**
 1. Submit your project as a pull request to this repo.
 1. Do not commit secrets files such as `.env`. You should know how to use `.gitignore` to make sure this doesn't happen.
 1. Include a README in the root of your project that explains how to run the project locally. The new README should replace the existing README doc (which you are reading now). Make sure your instructions work!
